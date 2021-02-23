@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  base:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: base_image
+
+  bash:
+    image: base_image
+    user: root
+    volumes:
+      - .:/usr/app/
+    working_dir: /usr/app/
+    entrypoint: /bin/sh
