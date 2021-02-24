@@ -14,9 +14,10 @@ A containerized Python framework for a better Data X development workflow. Where
     * Reading Data
     * Data Cleansing
     * Feature Engineering
+    * Exploratory Data Analysis
     * Model Development
     * Performance Monitoring (logs)
-    * Model Interpretation
+    * Model Interpretation (SHAP)
 7. Testing: Pytest
 8. Model Versioning, e.g. MLFlow, DVC, CML
 9. API
