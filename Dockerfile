@@ -1,4 +1,4 @@
-FROM python:3.9.2-alpine3.13 AS base
+FROM python:3.9.2 AS base
 
 ARG APP_DIR=/usr/app/
 
@@ -8,12 +8,10 @@ RUN mkdir ${APP_DIR}
 
 WORKDIR ${APP_DIR}
 
-RUN apk update
+RUN apt-get update
 
-RUN apk add --update alpine-sdk
-
-RUN apk add py-pip
+RUN apt-get install -y build-essential
 
 COPY requirements.txt ${APP_DIR}
 
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
