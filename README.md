@@ -10,7 +10,7 @@ A containerized Python framework for a better Data X development workflow. Where
 3. VS Code integration with Docker
 4. Makefile with definitions of commands, e.g. `make release`
 5. Git hooks
-    * (linting)[https://medium.com/staqu-dev-logs/keeping-python-code-clean-with-pre-commit-hooks-black-flake8-and-isort-cac8b01e0ea1]
+    * [linting](https://medium.com/staqu-dev-logs/keeping-python-code-clean-with-pre-commit-hooks-black-flake8-and-isort-cac8b01e0ea1)
     * testing (pytest)
 6. Python Template for the Machine Learning Pipeline
     * Reading Data
