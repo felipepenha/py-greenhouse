@@ -26,6 +26,7 @@
 
 BUILD = docker-compose build
 RUN = docker-compose run
+VERSION = $(shell awk -F ' = ' '$$1 ~ /version/ { gsub(/[\"]/, "", $$2); printf("%s",$$2) }' version.toml)
 
 help:
 	@echo "USAGE"
@@ -41,11 +42,32 @@ help:
 	@echo "    build           build image using cache"
 	@echo "    build-no-cache  build image from scratch, and not from cache"
 	@echo "    bash            bash REPL (Read-Eval-Print loop), suitable for debugging"
-	@echo "    python          access Python through the Evcxr REPL (Read-Eval-Print loop)"
-	@echo "    jupyter         access Python through the Evcxr Jupyter Notebook"
+	@echo "    python          access Python through the REPL (Read-Eval-Print loop)"
+	@echo "    jupyter         access Python through the Jupyter Notebook"
 	@echo "    release         Release on the dev branch"
 
 #################
 # User Commands #
 #################
 
+build:
+	$(BUILD)
+
+build-no-cache:
+	$(BUILD) --no-cache
+
+bash:
+	$(RUN) bash
+
+python3:
+	$(RUN) python3
+
+jupyter:
+	$(RUN) --service-ports jupyter
+
+debug:
+	echo $(VERSION)
+
+release:
+	git tag -a $(VERSION) -m "Auto-generated release $(VERSION)"
+	git push origin HEAD:dev tag $(VERSION)
