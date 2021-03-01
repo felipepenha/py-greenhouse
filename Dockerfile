@@ -1,4 +1,4 @@
-FROM python:3.9.2 AS base
+FROM python:3.9.2-slim-buster AS base
 
 ARG APP_DIR=/usr/app/
 
