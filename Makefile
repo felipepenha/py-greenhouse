@@ -50,6 +50,12 @@ help:
 # User Commands #
 #################
 
+install-requirements:
+	pip3 install pre-commit
+	pre-commit install
+	pre-commit migrate-config
+	pre-commit autoupdate
+
 build:
 	$(BUILD)
 
