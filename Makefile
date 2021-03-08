@@ -75,5 +75,5 @@ debug:
 	echo $(VERSION)
 
 release:
-	git tag -a $(VERSION) -m "Auto-generated release $(VERSION)"
+	git tag -a $(VERSION) -m "VERSION=$(VERSION) read from `version.toml`"
 	git push origin HEAD:dev tag $(VERSION)
