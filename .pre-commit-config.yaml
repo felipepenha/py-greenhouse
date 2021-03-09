@@ -3,13 +3,32 @@ repos:
     rev: v3.4.0
     hooks:
     -   id: check-toml
+        always_run: true
+        verbose: true
     -   id: check-yaml
+        always_run: true
+        verbose: true
     -   id: requirements-txt-fixer
+        always_run: true
+        verbose: true
 -   repo: https://github.com/ambv/black
     rev: 20.8b1
     hooks:
-    - id: black
+    -   id: black
+        always_run: true
+        verbose: true
 -   repo: https://gitlab.com/pycqa/flake8
     rev: 3.8.4
     hooks:
     -   id: flake8
+        always_run: true
+        verbose: true
+-   repo: local
+    hooks:
+    -   id: test_hello
+        name: test_hello
+        entry: pytest --verbose
+        language: system
+        pass_filenames: false
+        always_run: true
+        verbose: true
