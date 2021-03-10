@@ -42,7 +42,7 @@ help:
 	@echo "    build           build image using cache"
 	@echo "    build-no-cache  build image from scratch, and not from cache"
 	@echo "    bash            bash REPL (Read-Eval-Print loop), suitable for debugging"
-	@echo "    python          access Python through the REPL (Read-Eval-Print loop)"
+	@echo "    python3         access Python through the REPL (Read-Eval-Print loop)"
 	@echo "    jupyter         access Python through the Jupyter Notebook"
 	@echo "    release         Release on the dev branch"
 
