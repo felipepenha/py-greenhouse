@@ -32,3 +32,11 @@ services:
     command: "jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --no-browser"
     ports:
       - 8888:8888
+
+  test:
+    image: base_image
+    user: root
+    volumes:
+      - .:/usr/app/
+    working_dir: /usr/app/
+    command: "pytest --verbose"
