@@ -17,17 +17,11 @@ repos:
     -   id: black
         always_run: true
         verbose: true
--   repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.4
-    hooks:
-    -   id: flake8
-        always_run: true
-        verbose: true
 -   repo: local
     hooks:
-    -   id: test_hello
-        name: test_hello
-        entry: pytest --verbose
+    -   id: test
+        name: test
+        entry: make test
         language: system
         pass_filenames: false
         always_run: true

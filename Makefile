@@ -71,6 +71,9 @@ python3:
 jupyter:
 	$(RUN) --service-ports jupyter
 
+test:
+	$(RUN) test
+
 debug:
 	echo $(VERSION)
 
