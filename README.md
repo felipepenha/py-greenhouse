@@ -106,7 +106,7 @@ COMMANDS
     build           build image using cache
     build-no-cache  build image from scratch, and not from cache
     bash            bash REPL (Read-Eval-Print loop), suitable for debugging
-    python          access Python through the REPL (Read-Eval-Print loop)
+    python3         access Python through the REPL (Read-Eval-Print loop)
     jupyter         access Python through the Jupyter Notebook
     release         Release on the dev branch
 
@@ -166,6 +166,8 @@ Check out additional examples in the `/notebooks` directory (`.ipynb` files with
 
 ```bash
 .
+├── conftest.py
+├── CONTRIBUTING.md
 ├── docker-compose.yml
 ├── Dockerfile
 ├── images
@@ -173,14 +175,19 @@ Check out additional examples in the `/notebooks` directory (`.ipynb` files with
 ├── Makefile
 ├── README.md
 ├── requirements.txt
-├── test
+├── src
+│   ├── hello_world.py
+│   ├── __init__.py
+│   └── main.py
+├── tests
+│   └── test_hello.py
 └── version.toml
 ```
 
 
 * `src/`: source directory for your Python package
-* `test/`: tests of Python code
-* `notebooks/`: notebooks with examples
+* `test/`: tests of Python code. All tests will run automatically as pre-commit git hooks.
+* `examples/`: examples, usually Jupyter Notebooks not in production
 * `version.toml`: information about your project, such as the version number to be used in the git tag pushed to the repo with `make release`.
 * `requirements.txt`: pip3 requirements for your project
 
@@ -189,7 +196,7 @@ Check out additional examples in the `/notebooks` directory (`.ipynb` files with
 
 You need to include any external dependencies to the `requirements.txt` file in addition to the default list:
 
-```toml
+```
 jupyterlab==3.0.9
 numpy==1.20.1
 pandas==1.2.2
@@ -207,9 +214,9 @@ Follow the instructins in [CONTRIBUTING.md](https://github.com/felipepenha/rust-
 - [x] Docker-compose with services
 - [x] VS Code integration with Docker
 - [x] Makefile with definitions of commands, e.g. `make release`
-- [ ] Git hooks
+- [x] Git hooks
     - [x] [linting](https://medium.com/staqu-dev-logs/keeping-python-code-clean-with-pre-commit-hooks-black-flake8-and-isort-cac8b01e0ea1)
-    - [ ] testing (pytest)
+    - [x] testing (pytest)
 - [ ] Python Template for the Machine Learning Pipeline
     - [ ] Reading Data
     - [ ] Data Cleansing
