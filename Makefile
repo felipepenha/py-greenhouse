@@ -44,7 +44,8 @@ help:
 	@echo "    bash            bash REPL (Read-Eval-Print loop), suitable for debugging"
 	@echo "    python3         access Python through the REPL (Read-Eval-Print loop)"
 	@echo "    jupyter         access Python through the Jupyter Notebook"
-	@echo "    release         Release on the dev branch"
+	@echo "    test            run all tests using pytest"
+	@echo "    release         release on the dev branch"
 
 #################
 # User Commands #
@@ -73,9 +74,6 @@ jupyter:
 
 test:
 	$(RUN) test
-
-debug:
-	echo $(VERSION)
 
 release:
 	git tag -a $(VERSION) -m "VERSION=$(VERSION) read from `version.toml`"
