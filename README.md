@@ -5,7 +5,7 @@ A containerized Python framework for a better Data X development workflow. Where
 
 The name "Greenhouse" is a metaphor. A greenhouse is a structure made of glass to grow plants despite of external conditions such as a cold winter. Likewise, the Greenhouse framework builds a standalone container for Rust developmet which is fully transparent to the user.
 
-![](/images/greenhouse_architecture_v01.png)
+![](/images/greenhouse_architecture_v02.png)
 
 # Local OS Requirements
 
@@ -206,6 +206,8 @@ pytest==6.2.2
 ## Continuous Integration / Continuous Delivery (CI/CD)
 
 Follow the instructins in [CONTRIBUTING.md](https://github.com/felipepenha/rust-greenhouse/blob/main/CONTRIBUTING.md). Be sure to update `version.toml` before each new release on the `dev` branch.
+
+![](/images/greenhouse_architecture_gitops.png)
 
 
 # To Do
