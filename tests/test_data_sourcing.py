@@ -1,12 +1,10 @@
 import pandera as pa
-from src.main import (
-    data_sourcing,
-)
+from src.data_sourcing import get
 
 
-def test_import_data():
+def test_data_sourcing_get():
 
-    df = data_sourcing()
+    df = get()
 
     print(df)
 
