@@ -75,6 +75,9 @@ jupyter:
 test:
 	$(RUN) test
 
+pre-commit:
+	pre-commit run --all-files
+
 release:
 	git tag -a $(VERSION) -m "VERSION=$(VERSION) read from `version.toml`"
 	git push origin HEAD:dev tag $(VERSION)
