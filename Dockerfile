@@ -12,6 +12,8 @@ RUN apt-get update
 
 RUN apt-get install -y build-essential
 
+RUN apt-get -y install graphviz
+
 COPY requirements.txt ${APP_DIR}
 
 RUN pip3 install -r requirements.txt
