@@ -66,12 +66,19 @@ sudo apt-get install python3-pip
 
 ```
 pip3 install pre-commit
+```
+
+In the main directory of the project where there is already a `.git/` subdirectory:
+
+```
 pre-commit install
 pre-commit migrate-config
 pre-commit autoupdate
 ```
 
-Or, simply run in the terminal `make install-requirements`, to install the `pre-commit` Python package.
+The main directory may be either the locally cloned py-greenhouse or a project based on the github template.
+
+Alternatively, simply run in the terminal `make install-requirements`, to install the `pre-commit` Python package.
 
 ## Do I need to install any other requirements?
 
