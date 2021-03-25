@@ -84,7 +84,7 @@ add-commit:
 	git commit --message "$(message)" --verbose
 
 release:
-	git tag -annotate $(VERSION) \
+	git tag --annotate $(VERSION) \
 	--message "VERSION=$(VERSION) read from `version.toml`" \
 	--verbose
 	
