@@ -1,8 +1,6 @@
 {
     "name": "py-greenhouse",
-    "dockerComposeFile": "docker-compose.yml",
-    "service": "bash",
-    "workspaceFolder": "/usr/app/",
+    "dockerFile": "Dockerfile",
     "extensions": ["ms-python.python"],
-    "shutdownAction": "stopCompose"
+    "shutdownAction": "stopContainer"
 }
