@@ -8,6 +8,10 @@ repos:
     -   id: check-yaml
         always_run: true
         verbose: true
+    -   id: pretty-format-json
+        always_run: true
+        verbose: true
+        args: ["--autofix"]
     -   id: requirements-txt-fixer
         always_run: true
         verbose: true
