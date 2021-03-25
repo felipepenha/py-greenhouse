@@ -78,14 +78,30 @@ test:
 	$(RUN) test
 
 add-commit:
+
+	# Add all files
 	git add --all --verbose
-	- pre-commit run --all-files --verbose
+
+	# Run hooks in `pre-commit` that cause file changes
+	# `-` signalizes that errors will be ignored by make
+	- pre-commit run requirements-txt-fixer
+	- pre-commit run black
+
+	# Add currently tracked files (which have been modified)
 	git add --update --verbose
+
+	# Commit with `--message "$(message)"`.
+	# `pre-commit` will run once again,
+	# but now for all hooks
 	git commit --message "$(message)" --verbose
 
 release:
+
+	# Create tag based on `version.toml`
 	git tag --annotate $(VERSION) \
 	--message "VERSION=$(VERSION) read from `version.toml`" \
 	--verbose
 	
+	# Push from `HEAD` (on current branch) to `dev`,
+	# using the tag created above.
 	git push origin HEAD:dev tag $(VERSION) --verbose
