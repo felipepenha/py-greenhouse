@@ -45,7 +45,9 @@ help:
 	@echo "    python3         access Python through the REPL (Read-Eval-Print loop)"
 	@echo "    jupyter         access Python through the Jupyter Notebook"
 	@echo "    test            run all tests using pytest"
-	@echo "    release         release on the dev branch"
+	@echo "    add-commit      git add, pre-commit, and commit"
+	@echo "    release         release on the dev branch. \
+	It is necessary to update version.toml before this operation"
 
 #################
 # User Commands #
@@ -75,9 +77,15 @@ jupyter:
 test:
 	$(RUN) test
 
-pre-commit:
-	pre-commit run --all-files
+add-commit:
+	git add --all --verbose
+	- pre-commit run --all-files --verbose
+	git add --update --verbose
+	git commit --message "$(message)" --verbose
 
 release:
-	git tag -a $(VERSION) -m "VERSION=$(VERSION) read from `version.toml`"
-	git push origin HEAD:dev tag $(VERSION)
+	git tag -annotate $(VERSION) \
+	--message "VERSION=$(VERSION) read from `version.toml`" \
+	--verbose
+	
+	git push origin HEAD:dev tag $(VERSION) --verbose
