@@ -1,6 +1,11 @@
 {
-    "name": "py-greenhouse",
-    "dockerFile": "Dockerfile",
-    "extensions": ["ms-python.python", "dracula-theme.theme-dracula"],
-    "shutdownAction": "stopContainer"
+  "dockerFile": "Dockerfile",
+  "extensions": [
+    "ms-python.python",
+    "dracula-theme.theme-dracula",
+    "bungcip.better-toml",
+    "tomoki1207.pdf"
+  ],
+  "name": "py-greenhouse",
+  "shutdownAction": "stopContainer"
 }
