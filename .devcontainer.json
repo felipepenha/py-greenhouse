@@ -1,6 +1,6 @@
 {
     "name": "py-greenhouse",
     "dockerFile": "Dockerfile",
-    "extensions": ["ms-python.python"],
+    "extensions": ["ms-python.python", "dracula-theme.theme-dracula"],
     "shutdownAction": "stopContainer"
 }
