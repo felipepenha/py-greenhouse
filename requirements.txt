@@ -1,7 +1,7 @@
 jupyterlab==3.0.9
 matplotlib==3.3.4
 numpy==1.20.1
-palmerpenguins
+palmerpenguins==0.1.4
 pandas==1.2.2
 pandas-profiling==2.11.0
 pandera==0.6.2

@@ -44,10 +44,10 @@ help:
 	@echo "    bash            bash REPL (Read-Eval-Print loop), suitable for debugging"
 	@echo "    python3         access Python through the REPL (Read-Eval-Print loop)"
 	@echo "    jupyter         access Python through the Jupyter Notebook"
-	@echo "    test            run all tests using pytest"
+	@echo "    test            run all tests using pytest (from within the container)"
 	@echo "    add-commit      git add, pre-commit, and commit"
-	@echo "    release         release on the dev branch. \
-	It is necessary to update version.toml before this operation"
+	@echo "    release         release on dev branch. \
+	Be sure to update version.toml before running this operation"
 
 #################
 # User Commands #
@@ -76,6 +76,12 @@ jupyter:
 
 test:
 	$(RUN) test
+
+run:
+	$(RUN) run
+
+pre-commit:
+	pre-commit run --all-files
 
 add-commit:
 	# `-` signalizes that errors will be ignored by make
