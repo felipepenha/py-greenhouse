@@ -40,3 +40,11 @@ services:
       - .:/usr/app/
     working_dir: /usr/app/
     command: "pytest --verbose"
+
+  run:
+    image: base_image
+    user: root
+    volumes:
+      - .:/usr/app/
+    working_dir: /usr/app/
+    command: "python3 src/main.py"

@@ -2,9 +2,28 @@ import palmerpenguins
 
 
 def get():
-    """
+    """Get the data.
     This template function uses the Palmer Peguins dataset as a place holder.
     Replace it by your own code to import your project's data.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    pandas dataframe
+        Dataframe containing data.
+
+    Examples
+    --------
+
+    Raises
+    ------
+
+    Notes
+    -----
+
     """
 
     df = palmerpenguins.load_penguins()
