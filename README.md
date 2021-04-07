@@ -48,6 +48,10 @@ sudo apt-get update
 sudo apt-get install build-essential
 ```
 
+## - awk
+## - tee
+## - touch
+
 ## - python3
 
 ```

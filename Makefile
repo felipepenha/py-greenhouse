@@ -61,12 +61,16 @@ install-requirements:
 
 build:
 	mkdir --parents logs
-	touch logs/output.txt
+	touch logs/log_run.txt
+	touch logs/log_commit.txt
+	touch logs/log_release.txt
 	$(BUILD)
 
 build-no-cache:
 	mkdir --parents logs
-	touch logs/output.txt
+	touch logs/log_run.txt
+	touch logs/log_commit.txt
+	touch logs/log_release.txt
 	$(BUILD) --no-cache
 
 bash:
@@ -82,10 +86,11 @@ test:
 	$(RUN) test
 
 run:
-	$(RUN) run
+	$(RUN) run | tee -ai logs/log_run.txt
 
 pre-commit:
-	pre-commit run --all-files
+	pre-commit run --all-files \
+	| tee -ai logs/log_commit.txt
 
 add-commit:
 	# `-` signalizes that errors will be ignored by make
@@ -100,7 +105,8 @@ add-commit:
 	# Commit with `--message "$(message)"`.
 	# `pre-commit` will run once again,
 	# but now for all hooks
-	git commit --message="$(message)"
+	git commit --message="$(message)" \
+	| tee -ai logs/log_commit.txt
 
 release:
 	# Create tag based on `version.toml`
@@ -109,4 +115,5 @@ release:
 	--message "VERSION=$(VERSION) read from `version.toml`"
 	# Push from `HEAD` (on current branch) to `dev`,
 	# using the tag created above.
-	git push origin HEAD:dev tag $(VERSION)
+	git push origin HEAD:dev tag $(VERSION) \
+	| tee -ai logs/log_release.txt
