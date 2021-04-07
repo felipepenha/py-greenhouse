@@ -90,7 +90,7 @@ pre-commit:
 add-commit:
 	# `-` signalizes that errors will be ignored by make
 	# Add all files
-	- git add --all --update
+	- git add --all
 	# Run hooks in `pre-commit` that cause file changes
 	- pre-commit run pretty-format-json
 	- pre-commit run requirements-txt-fixer
