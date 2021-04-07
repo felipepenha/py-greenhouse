@@ -1,3 +1,3 @@
 [flake8]
-max-line-length = 81
+max-line-length = 87
 extend-ignore = "E203"

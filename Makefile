@@ -60,9 +60,13 @@ install-requirements:
 	pre-commit autoupdate
 
 build:
+	mkdir --parents logs
+	touch logs/output.txt
 	$(BUILD)
 
 build-no-cache:
+	mkdir --parents logs
+	touch logs/output.txt
 	$(BUILD) --no-cache
 
 bash:
