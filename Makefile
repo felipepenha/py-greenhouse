@@ -61,12 +61,12 @@ install-requirements:
 
 build:
 	mkdir --parents logs
-	touch logs/output.txt
+	touch logs/log_run.txt
 	$(BUILD)
 
 build-no-cache:
 	mkdir --parents logs
-	touch logs/output.txt
+	touch logs/log_run.txt
 	$(BUILD) --no-cache
 
 bash:
@@ -82,7 +82,7 @@ test:
 	$(RUN) test
 
 run:
-	$(RUN) run
+	$(RUN) run | tee -ai logs/log_run.txt
 
 pre-commit:
 	pre-commit run --all-files
@@ -95,6 +95,7 @@ add-commit:
 	- pre-commit run pretty-format-json
 	- pre-commit run requirements-txt-fixer
 	- pre-commit run black
+	- pre-commit run flake8
 	# Add currently tracked files (which have been modified)
 	- git add --update
 	# Commit with `--message "$(message)"`.
