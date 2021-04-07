@@ -65,4 +65,4 @@ def split(df, train_ratio=0.8, valid_ratio=0.1, test_ratio=0.1, seed=0):
     # Test set is everything in rest `except` for `valid`
     test = rest.drop(valid.index)
 
-    return {"train": train, "valid": valid, "test": test}
+    return train, valid, test
