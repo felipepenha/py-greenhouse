@@ -40,7 +40,7 @@ services:
     volumes:
       - .:/usr/app/
     working_dir: /usr/app/
-    command: "pytest --verbose"
+    command: "pytest --verbose --capture=no"
 
   run:
     image: base_image

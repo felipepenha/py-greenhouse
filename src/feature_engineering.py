@@ -2,6 +2,45 @@ from feature_engine import encoding, imputation
 
 
 def numerical_missing_imputation(train, valid, test, cols, imputation_method="median"):
+    """Missing imputation for numerical variables.
+
+    The algorithm learns from the train set and applies transformations
+    to all three input datasets: train, valid, test.
+
+    Parameters
+    ----------
+    train: pandas dataframe
+        Training set
+
+    valid: pandas dataframe
+        Validation set
+
+    test: pandas dataframe
+        Test set
+
+    cols: list
+        List of numerical columns
+
+    imputation_method: string
+        Desired method of imputation. Options are 'mean' and 'median'.
+        Default value: 'median'.
+
+    Returns
+    -------
+    list
+        (train, valid, test)
+        (pandas dataframe, pandas dataframe, pandas dataframe)
+
+    Examples
+    --------
+
+    Raises
+    ------
+
+    Notes
+    -----
+
+    """
 
     fe = imputation.MeanMedianImputer(
         imputation_method=imputation_method, variables=cols
@@ -19,6 +58,43 @@ def numerical_missing_imputation(train, valid, test, cols, imputation_method="me
 
 
 def one_hot_encoding(train, valid, test, cols):
+    """One-hot-encoding of all categories found in `cols`.
+
+    The algorithm learns from the train set and applies transformations
+    to all three input datasets: train, valid, test.
+
+    Missing values in col lead to col_na=1
+
+    Parameters
+    ----------
+    train: pandas dataframe
+        Training set
+
+    valid: pandas dataframe
+        Validation set
+
+    test: pandas dataframe
+        Test set
+
+    cols: list
+        List of numerical columns
+
+    Returns
+    -------
+    list
+        (train, valid, test)
+        (pandas dataframe, pandas dataframe, pandas dataframe)
+
+    Examples
+    --------
+
+    Raises
+    ------
+
+    Notes
+    -----
+
+    """
 
     fe = encoding.OneHotEncoder(variables=cols)
 
