@@ -11,3 +11,30 @@ tests/test_feature_engineering.py::test_numerical_missing_imputation_twofeatures
 tests/test_feature_engineering.py::test_one_hot_encoding [32mPASSED[0m[32m          [100%][0m
 
 [32m============================== [32m[1m3 passed[0m[32m in 1.94s[0m[32m ===============================[0m
+Fri 09 Apr 2021 08:47:07 PM UTC
+[1m============================= test session starts ==============================[0m
+platform linux -- Python 3.9.2, pytest-6.2.2, py-1.10.0, pluggy-0.13.1 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /usr/app
+plugins: anyio-2.2.0
+[1mcollecting ... [0m[1mcollecting 1 item                                                              [0m[1mcollected 3 items                                                              [0m
+
+tests/test_data_sourcing.py::test_data_sourcing_get      bill_length_mm  ...    species
+0              39.1  ...     Adelie
+1              39.5  ...     Adelie
+2              40.3  ...     Adelie
+3               NaN  ...     Adelie
+4              36.7  ...     Adelie
+..              ...  ...        ...
+339            55.8  ...  Chinstrap
+340            43.5  ...  Chinstrap
+341            49.6  ...  Chinstrap
+342            50.8  ...  Chinstrap
+343            50.2  ...  Chinstrap
+
+[344 rows x 6 columns]
+[32mPASSED[0m
+tests/test_feature_engineering.py::test_numerical_missing_imputation_twofeatures [32mPASSED[0m
+tests/test_feature_engineering.py::test_one_hot_encoding [32mPASSED[0m
+
+[32m============================== [32m[1m3 passed[0m[32m in 2.45s[0m[32m ===============================[0m

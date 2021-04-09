@@ -118,5 +118,6 @@ release:
 	--message "VERSION=$(VERSION) read from `version.toml`"
 	# Push from `HEAD` (on current branch) to `dev`,
 	# using the tag created above.
+	# Append log to file including datetime in UTC
 	(date --utc && git push origin HEAD:dev tag $(VERSION)) \
 	2>&1 | tee -ai logs/log_release.txt

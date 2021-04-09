@@ -7,10 +7,7 @@ from prefect import Flow, task, context
 
 import pandas as pd
 
-import pathlib
-
-path = pathlib.Path(__file__).parents[1].absolute()
-
+# Pandas options for better shell display
 pd.set_option("display.max_rows", 100)
 pd.set_option("display.max_columns", None)
 pd.set_option("display.width", None)
@@ -99,6 +96,7 @@ with Flow("greenhouse") as flow:
     df = normalizing(df)
     train, valid, test = splitting(df)
 
+    # Categorical
     cat_cols = [
         "sex",
     ]
@@ -110,6 +108,7 @@ with Flow("greenhouse") as flow:
         cols=cat_cols,
     )
 
+    # Numerical
     num_cols = [
         "bill_length_mm",
         "bill_depth_mm",
@@ -130,8 +129,6 @@ if __name__ == "__main__":
 
     # Run prefect flow
     flow.run()
-
-    print(path)
 
     # Export flow as a PDF
     flow.visualize(filename="flow/prefect_flow")
