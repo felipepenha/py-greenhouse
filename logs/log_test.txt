@@ -1,0 +1,13 @@
+Fri 09 Apr 2021 08:21:49 PM UTC
+[1m============================= test session starts ==============================[0m
+platform linux -- Python 3.9.2, pytest-6.2.2, py-1.10.0, pluggy-0.13.1 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /usr/app
+plugins: anyio-2.2.0
+[1mcollecting ... [0m[1mcollecting 1 item                                                              [0m[1mcollected 3 items                                                              [0m
+
+tests/test_data_sourcing.py::test_data_sourcing_get [32mPASSED[0m[32m               [ 33%][0m
+tests/test_feature_engineering.py::test_numerical_missing_imputation_twofeatures [32mPASSED[0m[32m [ 66%][0m
+tests/test_feature_engineering.py::test_one_hot_encoding [32mPASSED[0m[32m          [100%][0m
+
+[32m============================== [32m[1m3 passed[0m[32m in 1.94s[0m[32m ===============================[0m
