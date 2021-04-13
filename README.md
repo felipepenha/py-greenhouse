@@ -219,24 +219,3 @@ pytest==6.2.2
 Follow the instructins in [CONTRIBUTING.md](https://github.com/felipepenha/rust-greenhouse/blob/main/CONTRIBUTING.md). Be sure to update `version.toml` before each new release on the `dev` branch.
 
 ![](/images/greenhouse_architecture_gitops.png)
-
-
-# To Do
-
-- [x] Dockerfile to define container
-- [x] Docker-compose with services
-- [x] VS Code integration with Docker
-- [x] Makefile with definitions of commands, e.g. `make release`
-- [x] Git hooks
-    - [x] [linting](https://medium.com/staqu-dev-logs/keeping-python-code-clean-with-pre-commit-hooks-black-flake8-and-isort-cac8b01e0ea1)
-    - [x] testing (pytest)
-- [ ] Python Template for the Machine Learning Pipeline
-    - [ ] Reading Data
-    - [ ] Data Cleansing
-    - [ ] Feature Engineering
-    - [ ] Exploratory Data Analysis
-    - [ ] Model Development
-    - [ ] Performance Monitoring (logs)
-    - [ ] Model Interpretation (SHAP)
-- [ ] Model Versioning, e.g. MLFlow, DVC, CML
-- [ ] API

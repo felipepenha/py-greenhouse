@@ -2,3 +2,7 @@ Fri 09 Apr 2021 08:24:50 PM UTC
 To https://github.com/felipepenha/py-greenhouse.git
    26951c5..3054d92  HEAD -> dev
  * [new tag]         0.0.23 -> 0.0.23
+Fri 09 Apr 2021 08:48:36 PM UTC
+To https://github.com/felipepenha/py-greenhouse.git
+   3054d92..f3696b5  HEAD -> dev
+ * [new tag]         0.0.24 -> 0.0.24
