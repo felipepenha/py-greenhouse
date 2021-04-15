@@ -1,0 +1,625 @@
+Fri 09 Apr 2021 08:22:01 PM UTC
+/usr/app/src/main.py:17: FutureWarning: Passing a negative integer is deprecated in version 1.0 and will not be supported in future version. Instead, use None to not limit the column width.
+  pd.set_option("display.max_colwidth", -1)
+[2021-04-09 20:22:09+0000] INFO - prefect.FlowRunner | Beginning Flow run for 'greenhouse'
+[2021-04-09 20:22:09+0000] INFO - prefect.TaskRunner | Task 'sourcing': Starting task run...
+[2021-04-09 20:22:09+0000] INFO - prefect.TaskRunner | Task 'sourcing': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:09+0000] INFO - prefect.TaskRunner | Task 'cleansing': Starting task run...
+[2021-04-09 20:22:09+0000] INFO - prefect.TaskRunner | Task 'cleansing': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:09+0000] INFO - prefect.TaskRunner | Task 'normalizing': Starting task run...
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'normalizing': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'splitting': Starting task run...
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'splitting': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'splitting[0]': Starting task run...
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'splitting[0]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'splitting[1]': Starting task run...
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'splitting[1]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'splitting[2]': Starting task run...
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'splitting[2]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'one_hot': Starting task run...
+[2021-04-09 20:22:10+0000] INFO - prefect.one_hot |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex    species
+141  40.6            17.2           187.0              3475.0       male    Adelie   
+6    38.9            17.8           181.0              3625.0       female  Adelie   
+60   35.7            16.9           185.0              3150.0       female  Adelie   
+249  46.9            14.6           222.0              4875.0       female  Gentoo   
+54   34.5            18.1           187.0              2900.0       female  Adelie   
+..    ...             ...             ...                 ...          ...     ...   
+148  36.0            17.8           195.0              3450.0       female  Adelie   
+143  40.7            17.0           190.0              3725.0       male    Adelie   
+180  48.2            14.3           210.0              4600.0       female  Gentoo   
+131  43.1            19.2           197.0              3500.0       male    Adelie   
+306  40.9            16.6           187.0              3200.0       female  Chinstrap
+
+[275 rows x 6 columns]
+[2021-04-09 20:22:10+0000] INFO - prefect.one_hot |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex    species  sex_male  sex_female  sex_na
+141  40.6            17.2           187.0              3475.0       male    Adelie     1         0           0     
+6    38.9            17.8           181.0              3625.0       female  Adelie     0         1           0     
+60   35.7            16.9           185.0              3150.0       female  Adelie     0         1           0     
+249  46.9            14.6           222.0              4875.0       female  Gentoo     0         1           0     
+54   34.5            18.1           187.0              2900.0       female  Adelie     0         1           0     
+..    ...             ...             ...                 ...          ...     ...    ..        ..          ..     
+148  36.0            17.8           195.0              3450.0       female  Adelie     0         1           0     
+143  40.7            17.0           190.0              3725.0       male    Adelie     1         0           0     
+180  48.2            14.3           210.0              4600.0       female  Gentoo     0         1           0     
+131  43.1            19.2           197.0              3500.0       male    Adelie     1         0           0     
+306  40.9            16.6           187.0              3200.0       female  Chinstrap  0         1           0     
+
+[275 rows x 9 columns]
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'one_hot': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'one_hot[0]': Starting task run...
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'one_hot[0]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'one_hot[1]': Starting task run...
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'one_hot[1]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'one_hot[2]': Starting task run...
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'one_hot[2]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'imputation': Starting task run...
+[2021-04-09 20:22:10+0000] INFO - prefect.imputation |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g  sex species  sex_male  sex_female  sex_na
+141 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+6   NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+60  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+249 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+54  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+..   ..              ..             ..                 ..           ...  ...     ..        ..          ..    
+148 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+143 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+180 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+131 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+306 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+
+[275 rows x 9 columns]
+[2021-04-09 20:22:10+0000] INFO - prefect.imputation |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g  sex species  sex_male  sex_female  sex_na  bill_length_mm_imputed  bill_depth_mm_imputed  flipper_length_mm_imputed  body_mass_g_imputed
+141 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+6   NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+60  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+249 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+54  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+..   ..              ..             ..                 ..           ...  ...     ..        ..          ..      ..                      ..                     ..                         ..                 
+148 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+143 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+180 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+131 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+306 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+
+[275 rows x 13 columns]
+[2021-04-09 20:22:10+0000] INFO - prefect.TaskRunner | Task 'imputation': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:11+0000] INFO - prefect.TaskRunner | Task 'imputation[0]': Starting task run...
+[2021-04-09 20:22:11+0000] INFO - prefect.TaskRunner | Task 'imputation[0]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:11+0000] INFO - prefect.TaskRunner | Task 'imputation[2]': Starting task run...
+[2021-04-09 20:22:11+0000] INFO - prefect.TaskRunner | Task 'imputation[2]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:11+0000] INFO - prefect.TaskRunner | Task 'imputation[1]': Starting task run...
+[2021-04-09 20:22:11+0000] INFO - prefect.TaskRunner | Task 'imputation[1]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:22:11+0000] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
+/usr/app
+Fri 09 Apr 2021 08:47:20 PM UTC
+/usr/app/src/main.py:14: FutureWarning: Passing a negative integer is deprecated in version 1.0 and will not be supported in future version. Instead, use None to not limit the column width.
+  pd.set_option("display.max_colwidth", -1)
+[2021-04-09 20:47:26+0000] INFO - prefect.FlowRunner | Beginning Flow run for 'greenhouse'
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'sourcing': Starting task run...
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'sourcing': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'cleansing': Starting task run...
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'cleansing': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'normalizing': Starting task run...
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'normalizing': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'splitting': Starting task run...
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'splitting': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'splitting[0]': Starting task run...
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'splitting[0]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'splitting[1]': Starting task run...
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'splitting[1]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'splitting[2]': Starting task run...
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'splitting[2]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'one_hot': Starting task run...
+[2021-04-09 20:47:27+0000] INFO - prefect.one_hot |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex    species
+141  40.6            17.2           187.0              3475.0       male    Adelie   
+6    38.9            17.8           181.0              3625.0       female  Adelie   
+60   35.7            16.9           185.0              3150.0       female  Adelie   
+249  46.9            14.6           222.0              4875.0       female  Gentoo   
+54   34.5            18.1           187.0              2900.0       female  Adelie   
+..    ...             ...             ...                 ...          ...     ...   
+148  36.0            17.8           195.0              3450.0       female  Adelie   
+143  40.7            17.0           190.0              3725.0       male    Adelie   
+180  48.2            14.3           210.0              4600.0       female  Gentoo   
+131  43.1            19.2           197.0              3500.0       male    Adelie   
+306  40.9            16.6           187.0              3200.0       female  Chinstrap
+
+[275 rows x 6 columns]
+[2021-04-09 20:47:27+0000] INFO - prefect.one_hot |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex    species  sex_male  sex_female  sex_na
+141  40.6            17.2           187.0              3475.0       male    Adelie     1         0           0     
+6    38.9            17.8           181.0              3625.0       female  Adelie     0         1           0     
+60   35.7            16.9           185.0              3150.0       female  Adelie     0         1           0     
+249  46.9            14.6           222.0              4875.0       female  Gentoo     0         1           0     
+54   34.5            18.1           187.0              2900.0       female  Adelie     0         1           0     
+..    ...             ...             ...                 ...          ...     ...    ..        ..          ..     
+148  36.0            17.8           195.0              3450.0       female  Adelie     0         1           0     
+143  40.7            17.0           190.0              3725.0       male    Adelie     1         0           0     
+180  48.2            14.3           210.0              4600.0       female  Gentoo     0         1           0     
+131  43.1            19.2           197.0              3500.0       male    Adelie     1         0           0     
+306  40.9            16.6           187.0              3200.0       female  Chinstrap  0         1           0     
+
+[275 rows x 9 columns]
+[2021-04-09 20:47:27+0000] INFO - prefect.TaskRunner | Task 'one_hot': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'one_hot[0]': Starting task run...
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'one_hot[0]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'one_hot[1]': Starting task run...
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'one_hot[1]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'one_hot[2]': Starting task run...
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'one_hot[2]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'imputation': Starting task run...
+[2021-04-09 20:47:28+0000] INFO - prefect.imputation |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g  sex species  sex_male  sex_female  sex_na
+141 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+6   NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+60  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+249 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+54  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+..   ..              ..             ..                 ..           ...  ...     ..        ..          ..    
+148 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+143 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+180 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+131 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+306 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+
+[275 rows x 9 columns]
+[2021-04-09 20:47:28+0000] INFO - prefect.imputation |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g  sex species  sex_male  sex_female  sex_na  bill_length_mm_imputed  bill_depth_mm_imputed  flipper_length_mm_imputed  body_mass_g_imputed
+141 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+6   NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+60  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+249 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+54  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+..   ..              ..             ..                 ..           ...  ...     ..        ..          ..      ..                      ..                     ..                         ..                 
+148 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+143 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+180 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+131 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+306 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+
+[275 rows x 13 columns]
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'imputation': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'imputation[0]': Starting task run...
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'imputation[0]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'imputation[1]': Starting task run...
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'imputation[1]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'imputation[2]': Starting task run...
+[2021-04-09 20:47:28+0000] INFO - prefect.TaskRunner | Task 'imputation[2]': Finished task run for task with final state: 'Success'
+[2021-04-09 20:47:28+0000] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
+Tue 13 Apr 2021 09:32:21 PM UTC
+/usr/app/src/main.py:14: FutureWarning: Passing a negative integer is deprecated in version 1.0 and will not be supported in future version. Instead, use None to not limit the column width.
+  pd.set_option("display.max_colwidth", -1)
+[2021-04-13 21:32:32+0000] INFO - prefect.FlowRunner | Beginning Flow run for 'greenhouse'
+[2021-04-13 21:32:32+0000] INFO - prefect.TaskRunner | Task 'sourcing': Starting task run...
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'sourcing': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'cleansing': Starting task run...
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'cleansing': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'normalizing': Starting task run...
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'normalizing': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'splitting': Starting task run...
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'splitting': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'splitting[0]': Starting task run...
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'splitting[0]': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'splitting[1]': Starting task run...
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'splitting[1]': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'splitting[2]': Starting task run...
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'splitting[2]': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'one_hot': Starting task run...
+[2021-04-13 21:32:33+0000] INFO - prefect.one_hot |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex    species
+141  40.6            17.2           187.0              3475.0       male    Adelie   
+6    38.9            17.8           181.0              3625.0       female  Adelie   
+60   35.7            16.9           185.0              3150.0       female  Adelie   
+249  46.9            14.6           222.0              4875.0       female  Gentoo   
+54   34.5            18.1           187.0              2900.0       female  Adelie   
+..    ...             ...             ...                 ...          ...     ...   
+148  36.0            17.8           195.0              3450.0       female  Adelie   
+143  40.7            17.0           190.0              3725.0       male    Adelie   
+180  48.2            14.3           210.0              4600.0       female  Gentoo   
+131  43.1            19.2           197.0              3500.0       male    Adelie   
+306  40.9            16.6           187.0              3200.0       female  Chinstrap
+
+[275 rows x 6 columns]
+[2021-04-13 21:32:33+0000] INFO - prefect.one_hot |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex    species  sex_male  sex_female  sex_na
+141  40.6            17.2           187.0              3475.0       male    Adelie     1         0           0     
+6    38.9            17.8           181.0              3625.0       female  Adelie     0         1           0     
+60   35.7            16.9           185.0              3150.0       female  Adelie     0         1           0     
+249  46.9            14.6           222.0              4875.0       female  Gentoo     0         1           0     
+54   34.5            18.1           187.0              2900.0       female  Adelie     0         1           0     
+..    ...             ...             ...                 ...          ...     ...    ..        ..          ..     
+148  36.0            17.8           195.0              3450.0       female  Adelie     0         1           0     
+143  40.7            17.0           190.0              3725.0       male    Adelie     1         0           0     
+180  48.2            14.3           210.0              4600.0       female  Gentoo     0         1           0     
+131  43.1            19.2           197.0              3500.0       male    Adelie     1         0           0     
+306  40.9            16.6           187.0              3200.0       female  Chinstrap  0         1           0     
+
+[275 rows x 9 columns]
+[2021-04-13 21:32:33+0000] INFO - prefect.TaskRunner | Task 'one_hot': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'one_hot[0]': Starting task run...
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'one_hot[0]': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'one_hot[1]': Starting task run...
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'one_hot[1]': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'one_hot[2]': Starting task run...
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'one_hot[2]': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'imputation': Starting task run...
+[2021-04-13 21:32:34+0000] INFO - prefect.imputation |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g  sex species  sex_male  sex_female  sex_na
+141 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+6   NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+60  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+249 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+54  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+..   ..              ..             ..                 ..           ...  ...     ..        ..          ..    
+148 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+143 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+180 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+131 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+306 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+
+[275 rows x 9 columns]
+[2021-04-13 21:32:34+0000] INFO - prefect.imputation |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g  sex species  sex_male  sex_female  sex_na  bill_length_mm_imputed  bill_depth_mm_imputed  flipper_length_mm_imputed  body_mass_g_imputed
+141 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+6   NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+60  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+249 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+54  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+..   ..              ..             ..                 ..           ...  ...     ..        ..          ..      ..                      ..                     ..                         ..                 
+148 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+143 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+180 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+131 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+306 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+
+[275 rows x 13 columns]
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'imputation': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'imputation[0]': Starting task run...
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'imputation[0]': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'imputation[1]': Starting task run...
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'imputation[1]': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'imputation[2]': Starting task run...
+[2021-04-13 21:32:34+0000] INFO - prefect.TaskRunner | Task 'imputation[2]': Finished task run for task with final state: 'Success'
+[2021-04-13 21:32:34+0000] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
+Thu 15 Apr 2021 09:27:20 PM UTC
+/usr/app/src/main.py:15: FutureWarning: Passing a negative integer is deprecated in version 1.0 and will not be supported in future version. Instead, use None to not limit the column width.
+  pd.set_option("display.max_colwidth", -1)
+[2021-04-15 21:27:39+0000] INFO - prefect.FlowRunner | Beginning Flow run for 'greenhouse'
+[2021-04-15 21:27:39+0000] INFO - prefect.TaskRunner | Task 'sourcing': Starting task run...
+[2021-04-15 21:27:39+0000] INFO - prefect.TaskRunner | Task 'sourcing': Finished task run for task with final state: 'Success'
+[2021-04-15 21:27:39+0000] INFO - prefect.TaskRunner | Task 'cleansing': Starting task run...
+[2021-04-15 21:27:39+0000] INFO - prefect.TaskRunner | Task 'cleansing': Finished task run for task with final state: 'Success'
+[2021-04-15 21:27:40+0000] INFO - prefect.TaskRunner | Task 'normalizing': Starting task run...
+[2021-04-15 21:27:40+0000] INFO - prefect.TaskRunner | Task 'normalizing': Finished task run for task with final state: 'Success'
+[2021-04-15 21:27:40+0000] INFO - prefect.TaskRunner | Task 'splitting': Starting task run...
+[2021-04-15 21:27:40+0000] INFO - prefect.TaskRunner | Task 'splitting': Finished task run for task with final state: 'Success'
+[2021-04-15 21:27:40+0000] INFO - prefect.TaskRunner | Task 'splitting[0]': Starting task run...
+[2021-04-15 21:27:40+0000] INFO - prefect.TaskRunner | Task 'splitting[0]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:27:40+0000] INFO - prefect.TaskRunner | Task 'splitting[1]': Starting task run...
+[2021-04-15 21:27:40+0000] INFO - prefect.TaskRunner | Task 'splitting[1]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:27:40+0000] INFO - prefect.TaskRunner | Task 'splitting[2]': Starting task run...
+[2021-04-15 21:27:40+0000] INFO - prefect.TaskRunner | Task 'splitting[2]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:27:40+0000] INFO - prefect.TaskRunner | Task 'mon': Starting task run...
+Summarize dataset:   0% 0/20 [00:00<?, ?it/s]Summarize dataset:   0% 0/20 [00:00<?, ?it/s, Describe variable:flipper_length_mm]Summarize dataset:   5% 1/20 [00:00<00:02,  6.94it/s, Describe variable:flipper_length_mm]Summarize dataset:   5% 1/20 [00:00<00:02,  6.94it/s, Describe variable:df_index]         Summarize dataset:  10% 2/20 [00:00<00:02,  6.94it/s, Describe variable:bill_depth_mm]Summarize dataset:  15% 3/20 [00:00<00:02,  6.94it/s, Describe variable:bill_length_mm]Summarize dataset:  20% 4/20 [00:00<00:02,  6.94it/s, Describe variable:body_mass_g]   Summarize dataset:  25% 5/20 [00:00<00:02,  6.94it/s, Describe variable:sex]        Summarize dataset:  30% 6/20 [00:00<00:00, 27.82it/s, Describe variable:sex]Summarize dataset:  30% 6/20 [00:00<00:00, 27.82it/s, Describe variable:species]Summarize dataset:  35% 7/20 [00:00<00:00, 27.82it/s, Get variable types]       Summarize dataset:  40% 8/20 [00:00<00:00, 27.82it/s, Calculate pearson correlation]Summarize dataset:  45% 9/20 [00:00<00:00, 27.82it/s, Calculate spearman correlation]Summarize dataset:  50% 10/20 [00:00<00:00, 27.82it/s, Calculate kendall correlation]Summarize dataset:  55% 11/20 [00:00<00:00, 28.42it/s, Calculate kendall correlation]Summarize dataset:  55% 11/20 [00:00<00:00, 28.42it/s, Calculate phi_k correlation]  Summarize dataset:  60% 12/20 [00:04<00:00, 28.42it/s, Calculate cramers correlation]Summarize dataset:  65% 13/20 [00:04<00:00, 28.42it/s, Get scatter matrix]           Summarize dataset:  70% 14/20 [00:11<00:00, 28.42it/s, Get table statistics]Summarize dataset:  75% 15/20 [00:11<00:05,  1.07s/it, Get table statistics]Summarize dataset:  75% 15/20 [00:11<00:05,  1.07s/it, Get missing diagrams]Summarize dataset:  80% 16/20 [00:14<00:05,  1.33s/it, Get missing diagrams]Summarize dataset:  80% 16/20 [00:14<00:05,  1.33s/it, Take sample]         Summarize dataset:  85% 17/20 [00:14<00:03,  1.33s/it, Locating duplicates]Summarize dataset:  90% 18/20 [00:14<00:02,  1.33s/it, Get messages/warnings]Summarize dataset:  95% 19/20 [00:14<00:01,  1.33s/it, Get reproduction details]Summarize dataset: 100% 20/20 [00:14<00:00,  1.33s/it, Completed]               Summarize dataset: 100% 20/20 [00:14<00:00,  1.38it/s, Completed]
+Generate report structure:   0% 0/1 [00:00<?, ?it/s]Generate report structure: 100% 1/1 [00:10<00:00, 10.92s/it]Generate report structure: 100% 1/1 [00:10<00:00, 10.92s/it]
+Render HTML:   0% 0/1 [00:00<?, ?it/s]Render HTML: 100% 1/1 [00:02<00:00,  2.57s/it]Render HTML: 100% 1/1 [00:02<00:00,  2.57s/it]
+Export report to file:   0% 0/1 [00:00<?, ?it/s]Export report to file:   0% 0/1 [00:00<?, ?it/s]
+[2021-04-15 21:28:08+0000] ERROR - prefect.TaskRunner | Unexpected error: FileNotFoundError(2, 'No such file or directory')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/prefect/engine/runner.py", line 48, in inner
+    new_state = method(self, state, *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/prefect/engine/task_runner.py", line 865, in get_task_run_state
+    value = prefect.utilities.executors.run_task_with_timeout(
+  File "/usr/local/lib/python3.9/site-packages/prefect/utilities/executors.py", line 299, in run_task_with_timeout
+    return task.run(*args, **kwargs)  # type: ignore
+  File "/usr/app/src/main.py", line 95, in mon
+    monitoring.monitor(df, path)
+  File "/usr/app/src/monitoring.py", line 10, in monitor
+    profile.to_file(path)
+  File "/usr/local/lib/python3.9/site-packages/pandas_profiling/profile_report.py", line 292, in to_file
+    output_file.write_text(data, encoding="utf-8")
+  File "/usr/local/lib/python3.9/pathlib.py", line 1274, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors) as f:
+  File "/usr/local/lib/python3.9/pathlib.py", line 1241, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/usr/local/lib/python3.9/pathlib.py", line 1109, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: 'monitor/monitor_before_feat_eng.html'
+[2021-04-15 21:28:09+0000] INFO - prefect.TaskRunner | Task 'mon': Finished task run for task with final state: 'Failed'
+[2021-04-15 21:28:09+0000] INFO - prefect.TaskRunner | Task 'one_hot': Starting task run...
+[2021-04-15 21:28:09+0000] INFO - prefect.one_hot |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex    species
+141  40.6            17.2           187.0              3475.0       male    Adelie   
+6    38.9            17.8           181.0              3625.0       female  Adelie   
+60   35.7            16.9           185.0              3150.0       female  Adelie   
+249  46.9            14.6           222.0              4875.0       female  Gentoo   
+54   34.5            18.1           187.0              2900.0       female  Adelie   
+..    ...             ...             ...                 ...          ...     ...   
+148  36.0            17.8           195.0              3450.0       female  Adelie   
+143  40.7            17.0           190.0              3725.0       male    Adelie   
+180  48.2            14.3           210.0              4600.0       female  Gentoo   
+131  43.1            19.2           197.0              3500.0       male    Adelie   
+306  40.9            16.6           187.0              3200.0       female  Chinstrap
+
+[275 rows x 6 columns]
+[2021-04-15 21:28:09+0000] INFO - prefect.one_hot |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex    species  sex_male  sex_female  sex_na
+141  40.6            17.2           187.0              3475.0       male    Adelie     1         0           0     
+6    38.9            17.8           181.0              3625.0       female  Adelie     0         1           0     
+60   35.7            16.9           185.0              3150.0       female  Adelie     0         1           0     
+249  46.9            14.6           222.0              4875.0       female  Gentoo     0         1           0     
+54   34.5            18.1           187.0              2900.0       female  Adelie     0         1           0     
+..    ...             ...             ...                 ...          ...     ...    ..        ..          ..     
+148  36.0            17.8           195.0              3450.0       female  Adelie     0         1           0     
+143  40.7            17.0           190.0              3725.0       male    Adelie     1         0           0     
+180  48.2            14.3           210.0              4600.0       female  Gentoo     0         1           0     
+131  43.1            19.2           197.0              3500.0       male    Adelie     1         0           0     
+306  40.9            16.6           187.0              3200.0       female  Chinstrap  0         1           0     
+
+[275 rows x 9 columns]
+[2021-04-15 21:28:09+0000] INFO - prefect.TaskRunner | Task 'one_hot': Finished task run for task with final state: 'Success'
+[2021-04-15 21:28:09+0000] INFO - prefect.TaskRunner | Task 'one_hot[0]': Starting task run...
+[2021-04-15 21:28:09+0000] INFO - prefect.TaskRunner | Task 'one_hot[0]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:28:09+0000] INFO - prefect.TaskRunner | Task 'one_hot[1]': Starting task run...
+[2021-04-15 21:28:09+0000] INFO - prefect.TaskRunner | Task 'one_hot[1]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:28:09+0000] INFO - prefect.TaskRunner | Task 'one_hot[2]': Starting task run...
+[2021-04-15 21:28:09+0000] INFO - prefect.TaskRunner | Task 'one_hot[2]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:28:09+0000] INFO - prefect.TaskRunner | Task 'imputation': Starting task run...
+[2021-04-15 21:28:09+0000] INFO - prefect.imputation |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g  sex species  sex_male  sex_female  sex_na
+141 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+6   NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+60  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+249 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+54  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+..   ..              ..             ..                 ..           ...  ...     ..        ..          ..    
+148 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+143 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+180 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+131 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+306 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+
+[275 rows x 9 columns]
+[2021-04-15 21:28:09+0000] INFO - prefect.imputation |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g  sex species  sex_male  sex_female  sex_na  bill_length_mm_imputed  bill_depth_mm_imputed  flipper_length_mm_imputed  body_mass_g_imputed
+141 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+6   NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+60  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+249 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+54  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+..   ..              ..             ..                 ..           ...  ...     ..        ..          ..      ..                      ..                     ..                         ..                 
+148 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+143 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+180 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+131 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+306 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+
+[275 rows x 13 columns]
+[2021-04-15 21:28:09+0000] INFO - prefect.TaskRunner | Task 'imputation': Finished task run for task with final state: 'Success'
+[2021-04-15 21:28:10+0000] INFO - prefect.TaskRunner | Task 'imputation[0]': Starting task run...
+[2021-04-15 21:28:10+0000] INFO - prefect.TaskRunner | Task 'imputation[0]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:28:10+0000] INFO - prefect.TaskRunner | Task 'imputation[1]': Starting task run...
+[2021-04-15 21:28:10+0000] INFO - prefect.TaskRunner | Task 'imputation[1]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:28:10+0000] INFO - prefect.TaskRunner | Task 'imputation[2]': Starting task run...
+[2021-04-15 21:28:10+0000] INFO - prefect.TaskRunner | Task 'imputation[2]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:28:10+0000] INFO - prefect.TaskRunner | Task 'mon': Starting task run...
+Summarize dataset:   0% 0/27 [00:00<?, ?it/s]Summarize dataset:   0% 0/27 [00:00<?, ?it/s, Describe variable:df_index]Summarize dataset:   4% 1/27 [00:00<00:02,  9.76it/s, Describe variable:df_index]Summarize dataset:   4% 1/27 [00:00<00:02,  9.76it/s, Describe variable:bill_depth_mm]Summarize dataset:   7% 2/27 [00:00<00:02,  9.76it/s, Describe variable:bill_length_mm]Summarize dataset:  11% 3/27 [00:00<00:02,  9.76it/s, Describe variable:flipper_length_mm]Summarize dataset:  15% 4/27 [00:00<00:02,  9.76it/s, Describe variable:body_mass_g]      Summarize dataset:  19% 5/27 [00:00<00:02,  9.76it/s, Describe variable:sex]        Summarize dataset:  22% 6/27 [00:00<00:00, 23.73it/s, Describe variable:sex]Summarize dataset:  22% 6/27 [00:00<00:00, 23.73it/s, Describe variable:species]Summarize dataset:  26% 7/27 [00:00<00:00, 23.73it/s, Describe variable:sex_male]Summarize dataset:  30% 8/27 [00:00<00:00, 23.73it/s, Describe variable:sex_female]Summarize dataset:  33% 9/27 [00:00<00:00, 20.23it/s, Describe variable:sex_female]Summarize dataset:  33% 9/27 [00:00<00:00, 20.23it/s, Describe variable:bill_depth_mm_imputed]Summarize dataset:  37% 10/27 [00:00<00:00, 20.23it/s, Describe variable:sex_na]              Summarize dataset:  41% 11/27 [00:00<00:00, 20.23it/s, Describe variable:bill_length_mm_imputed]Summarize dataset:  44% 12/27 [00:00<00:00, 20.23it/s, Describe variable:flipper_length_mm_imputed]Summarize dataset:  48% 13/27 [00:00<00:00, 20.23it/s, Describe variable:body_mass_g_imputed]      Summarize dataset:  52% 14/27 [00:00<00:00, 20.23it/s, Get variable types]                   Summarize dataset:  56% 15/27 [00:00<00:00, 20.23it/s, Calculate pearson correlation]Summarize dataset:  59% 16/27 [00:00<00:00, 20.23it/s, Calculate spearman correlation]Summarize dataset:  63% 17/27 [00:00<00:00, 20.23it/s, Calculate kendall correlation] Summarize dataset:  67% 18/27 [00:00<00:00, 36.56it/s, Calculate kendall correlation]Summarize dataset:  67% 18/27 [00:00<00:00, 36.56it/s, Calculate phi_k correlation]  Summarize dataset:  70% 19/27 [00:01<00:00, 36.56it/s, Calculate cramers correlation]Summarize dataset:  74% 20/27 [00:02<00:00, 36.56it/s, Get scatter matrix]           Summarize dataset:  74% 20/27 [00:20<00:00, 36.56it/s, Get scatter matrix]Summarize dataset:  78% 21/27 [00:27<00:12,  2.14s/it, Get scatter matrix]Summarize dataset:  78% 21/27 [00:27<00:12,  2.14s/it, Get table statistics]Summarize dataset:  81% 22/27 [00:27<00:10,  2.14s/it, Get missing diagrams]Summarize dataset:  85% 23/27 [00:30<00:08,  2.03s/it, Get missing diagrams]Summarize dataset:  85% 23/27 [00:30<00:08,  2.03s/it, Take sample]         Summarize dataset:  89% 24/27 [00:30<00:06,  2.03s/it, Locating duplicates]Summarize dataset:  93% 25/27 [00:30<00:04,  2.03s/it, Get messages/warnings]Summarize dataset:  96% 26/27 [00:30<00:02,  2.03s/it, Get reproduction details]Summarize dataset: 100% 27/27 [00:30<00:00,  2.03s/it, Completed]               Summarize dataset: 100% 27/27 [00:30<00:00,  1.14s/it, Completed]
+Generate report structure:   0% 0/1 [00:00<?, ?it/s]Generate report structure: 100% 1/1 [00:16<00:00, 16.94s/it]Generate report structure: 100% 1/1 [00:16<00:00, 16.94s/it]
+Render HTML:   0% 0/1 [00:00<?, ?it/s]Render HTML: 100% 1/1 [00:05<00:00,  5.68s/it]Render HTML: 100% 1/1 [00:05<00:00,  5.68s/it]
+Export report to file:   0% 0/1 [00:00<?, ?it/s]Export report to file:   0% 0/1 [00:00<?, ?it/s]
+[2021-04-15 21:29:03+0000] ERROR - prefect.TaskRunner | Unexpected error: FileNotFoundError(2, 'No such file or directory')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/prefect/engine/runner.py", line 48, in inner
+    new_state = method(self, state, *args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/prefect/engine/task_runner.py", line 865, in get_task_run_state
+    value = prefect.utilities.executors.run_task_with_timeout(
+  File "/usr/local/lib/python3.9/site-packages/prefect/utilities/executors.py", line 299, in run_task_with_timeout
+    return task.run(*args, **kwargs)  # type: ignore
+  File "/usr/app/src/main.py", line 95, in mon
+    monitoring.monitor(df, path)
+  File "/usr/app/src/monitoring.py", line 10, in monitor
+    profile.to_file(path)
+  File "/usr/local/lib/python3.9/site-packages/pandas_profiling/profile_report.py", line 292, in to_file
+    output_file.write_text(data, encoding="utf-8")
+  File "/usr/local/lib/python3.9/pathlib.py", line 1274, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors) as f:
+  File "/usr/local/lib/python3.9/pathlib.py", line 1241, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/usr/local/lib/python3.9/pathlib.py", line 1109, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: 'monitor/monitor_after_feat_eng.html'
+[2021-04-15 21:29:03+0000] INFO - prefect.TaskRunner | Task 'mon': Finished task run for task with final state: 'Failed'
+[2021-04-15 21:29:03+0000] INFO - prefect.FlowRunner | Flow run FAILED: some reference tasks failed.
+Thu 15 Apr 2021 09:31:05 PM UTC
+/usr/app/src/main.py:15: FutureWarning: Passing a negative integer is deprecated in version 1.0 and will not be supported in future version. Instead, use None to not limit the column width.
+  pd.set_option("display.max_colwidth", -1)
+[2021-04-15 21:31:18+0000] INFO - prefect.FlowRunner | Beginning Flow run for 'greenhouse'
+[2021-04-15 21:31:18+0000] INFO - prefect.TaskRunner | Task 'sourcing': Starting task run...
+[2021-04-15 21:31:18+0000] INFO - prefect.TaskRunner | Task 'sourcing': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:18+0000] INFO - prefect.TaskRunner | Task 'cleansing': Starting task run...
+[2021-04-15 21:31:18+0000] INFO - prefect.TaskRunner | Task 'cleansing': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:18+0000] INFO - prefect.TaskRunner | Task 'normalizing': Starting task run...
+[2021-04-15 21:31:18+0000] INFO - prefect.TaskRunner | Task 'normalizing': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:18+0000] INFO - prefect.TaskRunner | Task 'splitting': Starting task run...
+[2021-04-15 21:31:18+0000] INFO - prefect.TaskRunner | Task 'splitting': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:19+0000] INFO - prefect.TaskRunner | Task 'splitting[0]': Starting task run...
+[2021-04-15 21:31:19+0000] INFO - prefect.TaskRunner | Task 'splitting[0]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:19+0000] INFO - prefect.TaskRunner | Task 'splitting[1]': Starting task run...
+[2021-04-15 21:31:19+0000] INFO - prefect.TaskRunner | Task 'splitting[1]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:19+0000] INFO - prefect.TaskRunner | Task 'splitting[2]': Starting task run...
+[2021-04-15 21:31:19+0000] INFO - prefect.TaskRunner | Task 'splitting[2]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:19+0000] INFO - prefect.TaskRunner | Task 'mon': Starting task run...
+Summarize dataset:   0% 0/20 [00:00<?, ?it/s]Summarize dataset:   0% 0/20 [00:00<?, ?it/s, Describe variable:bill_depth_mm]Summarize dataset:   5% 1/20 [00:00<00:02,  9.14it/s, Describe variable:bill_depth_mm]Summarize dataset:   5% 1/20 [00:00<00:02,  9.14it/s, Describe variable:flipper_length_mm]Summarize dataset:  10% 2/20 [00:00<00:01,  9.14it/s, Describe variable:bill_length_mm]   Summarize dataset:  15% 3/20 [00:00<00:01,  9.14it/s, Describe variable:df_index]      Summarize dataset:  20% 4/20 [00:00<00:01,  9.14it/s, Describe variable:body_mass_g]Summarize dataset:  25% 5/20 [00:00<00:01,  9.14it/s, Describe variable:sex]        Summarize dataset:  30% 6/20 [00:00<00:00, 24.00it/s, Describe variable:sex]Summarize dataset:  30% 6/20 [00:00<00:00, 24.00it/s, Describe variable:species]Summarize dataset:  35% 7/20 [00:00<00:00, 24.00it/s, Get variable types]       Summarize dataset:  40% 8/20 [00:00<00:00, 24.00it/s, Calculate pearson correlation]Summarize dataset:  45% 9/20 [00:00<00:00, 24.00it/s, Calculate spearman correlation]Summarize dataset:  50% 10/20 [00:00<00:00, 24.00it/s, Calculate kendall correlation]Summarize dataset:  55% 11/20 [00:00<00:00, 24.00it/s, Calculate phi_k correlation]  Summarize dataset:  60% 12/20 [00:03<00:02,  2.71it/s, Calculate phi_k correlation]Summarize dataset:  60% 12/20 [00:03<00:02,  2.71it/s, Calculate cramers correlation]Summarize dataset:  65% 13/20 [00:03<00:02,  2.71it/s, Get scatter matrix]           Summarize dataset:  70% 14/20 [00:11<00:06,  1.09s/it, Get scatter matrix]Summarize dataset:  70% 14/20 [00:11<00:06,  1.09s/it, Get table statistics]Summarize dataset:  75% 15/20 [00:11<00:05,  1.09s/it, Get missing diagrams]Summarize dataset:  80% 16/20 [00:13<00:04,  1.15s/it, Get missing diagrams]Summarize dataset:  80% 16/20 [00:13<00:04,  1.15s/it, Take sample]         Summarize dataset:  85% 17/20 [00:13<00:03,  1.15s/it, Locating duplicates]Summarize dataset:  90% 18/20 [00:13<00:02,  1.15s/it, Get messages/warnings]Summarize dataset:  95% 19/20 [00:13<00:01,  1.15s/it, Get reproduction details]Summarize dataset: 100% 20/20 [00:13<00:00,  1.15s/it, Completed]               Summarize dataset: 100% 20/20 [00:13<00:00,  1.45it/s, Completed]
+Generate report structure:   0% 0/1 [00:00<?, ?it/s]Generate report structure: 100% 1/1 [00:07<00:00,  7.88s/it]Generate report structure: 100% 1/1 [00:07<00:00,  7.88s/it]
+Render HTML:   0% 0/1 [00:00<?, ?it/s]Render HTML: 100% 1/1 [00:02<00:00,  2.06s/it]Render HTML: 100% 1/1 [00:02<00:00,  2.06s/it]
+Export report to file:   0% 0/1 [00:00<?, ?it/s]Export report to file: 100% 1/1 [00:00<00:00, 208.74it/s]
+[2021-04-15 21:31:43+0000] INFO - prefect.TaskRunner | Task 'mon': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:43+0000] INFO - prefect.TaskRunner | Task 'one_hot': Starting task run...
+[2021-04-15 21:31:43+0000] INFO - prefect.one_hot |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex    species
+141  40.6            17.2           187.0              3475.0       male    Adelie   
+6    38.9            17.8           181.0              3625.0       female  Adelie   
+60   35.7            16.9           185.0              3150.0       female  Adelie   
+249  46.9            14.6           222.0              4875.0       female  Gentoo   
+54   34.5            18.1           187.0              2900.0       female  Adelie   
+..    ...             ...             ...                 ...          ...     ...   
+148  36.0            17.8           195.0              3450.0       female  Adelie   
+143  40.7            17.0           190.0              3725.0       male    Adelie   
+180  48.2            14.3           210.0              4600.0       female  Gentoo   
+131  43.1            19.2           197.0              3500.0       male    Adelie   
+306  40.9            16.6           187.0              3200.0       female  Chinstrap
+
+[275 rows x 6 columns]
+[2021-04-15 21:31:43+0000] INFO - prefect.one_hot |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex    species  sex_male  sex_female  sex_na
+141  40.6            17.2           187.0              3475.0       male    Adelie     1         0           0     
+6    38.9            17.8           181.0              3625.0       female  Adelie     0         1           0     
+60   35.7            16.9           185.0              3150.0       female  Adelie     0         1           0     
+249  46.9            14.6           222.0              4875.0       female  Gentoo     0         1           0     
+54   34.5            18.1           187.0              2900.0       female  Adelie     0         1           0     
+..    ...             ...             ...                 ...          ...     ...    ..        ..          ..     
+148  36.0            17.8           195.0              3450.0       female  Adelie     0         1           0     
+143  40.7            17.0           190.0              3725.0       male    Adelie     1         0           0     
+180  48.2            14.3           210.0              4600.0       female  Gentoo     0         1           0     
+131  43.1            19.2           197.0              3500.0       male    Adelie     1         0           0     
+306  40.9            16.6           187.0              3200.0       female  Chinstrap  0         1           0     
+
+[275 rows x 9 columns]
+[2021-04-15 21:31:43+0000] INFO - prefect.TaskRunner | Task 'one_hot': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:43+0000] INFO - prefect.TaskRunner | Task 'one_hot[0]': Starting task run...
+[2021-04-15 21:31:43+0000] INFO - prefect.TaskRunner | Task 'one_hot[0]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:43+0000] INFO - prefect.TaskRunner | Task 'one_hot[1]': Starting task run...
+[2021-04-15 21:31:43+0000] INFO - prefect.TaskRunner | Task 'one_hot[1]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:43+0000] INFO - prefect.TaskRunner | Task 'one_hot[2]': Starting task run...
+[2021-04-15 21:31:43+0000] INFO - prefect.TaskRunner | Task 'one_hot[2]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:43+0000] INFO - prefect.TaskRunner | Task 'imputation': Starting task run...
+[2021-04-15 21:31:43+0000] INFO - prefect.imputation |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g  sex species  sex_male  sex_female  sex_na
+141 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+6   NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+60  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+249 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+54  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+..   ..              ..             ..                 ..           ...  ...     ..        ..          ..    
+148 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+143 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+180 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+131 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+306 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+
+[275 rows x 9 columns]
+[2021-04-15 21:31:43+0000] INFO - prefect.imputation |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g  sex species  sex_male  sex_female  sex_na  bill_length_mm_imputed  bill_depth_mm_imputed  flipper_length_mm_imputed  body_mass_g_imputed
+141 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+6   NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+60  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+249 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+54  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+..   ..              ..             ..                 ..           ...  ...     ..        ..          ..      ..                      ..                     ..                         ..                 
+148 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+143 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+180 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+131 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+306 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+
+[275 rows x 13 columns]
+[2021-04-15 21:31:43+0000] INFO - prefect.TaskRunner | Task 'imputation': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:43+0000] INFO - prefect.TaskRunner | Task 'imputation[0]': Starting task run...
+[2021-04-15 21:31:44+0000] INFO - prefect.TaskRunner | Task 'imputation[0]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:44+0000] INFO - prefect.TaskRunner | Task 'imputation[1]': Starting task run...
+[2021-04-15 21:31:44+0000] INFO - prefect.TaskRunner | Task 'imputation[1]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:44+0000] INFO - prefect.TaskRunner | Task 'imputation[2]': Starting task run...
+[2021-04-15 21:31:44+0000] INFO - prefect.TaskRunner | Task 'imputation[2]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:31:44+0000] INFO - prefect.TaskRunner | Task 'mon': Starting task run...
+Summarize dataset:   0% 0/27 [00:00<?, ?it/s]Summarize dataset:   0% 0/27 [00:00<?, ?it/s, Describe variable:bill_depth_mm]Summarize dataset:   4% 1/27 [00:00<00:03,  6.69it/s, Describe variable:bill_depth_mm]Summarize dataset:   4% 1/27 [00:00<00:03,  6.69it/s, Describe variable:flipper_length_mm]Summarize dataset:   7% 2/27 [00:00<00:03,  6.69it/s, Describe variable:bill_length_mm]   Summarize dataset:  11% 3/27 [00:00<00:03,  6.69it/s, Describe variable:body_mass_g]   Summarize dataset:  15% 4/27 [00:00<00:03,  6.69it/s, Describe variable:df_index]   Summarize dataset:  19% 5/27 [00:00<00:03,  6.69it/s, Describe variable:sex]     Summarize dataset:  22% 6/27 [00:00<00:01, 20.28it/s, Describe variable:sex]Summarize dataset:  22% 6/27 [00:00<00:01, 20.28it/s, Describe variable:species]Summarize dataset:  26% 7/27 [00:00<00:00, 20.28it/s, Describe variable:bill_length_mm_imputed]Summarize dataset:  30% 8/27 [00:00<00:01, 18.25it/s, Describe variable:bill_length_mm_imputed]Summarize dataset:  30% 8/27 [00:00<00:01, 18.25it/s, Describe variable:sex_male]              Summarize dataset:  33% 9/27 [00:00<00:00, 18.25it/s, Describe variable:sex_female]Summarize dataset:  37% 10/27 [00:00<00:00, 18.25it/s, Describe variable:flipper_length_mm_imputed]Summarize dataset:  41% 11/27 [00:00<00:00, 18.25it/s, Describe variable:body_mass_g_imputed]      Summarize dataset:  44% 12/27 [00:00<00:00, 24.41it/s, Describe variable:body_mass_g_imputed]Summarize dataset:  44% 12/27 [00:00<00:00, 24.41it/s, Describe variable:bill_depth_mm_imputed]Summarize dataset:  48% 13/27 [00:00<00:00, 24.41it/s, Describe variable:sex_na]               Summarize dataset:  52% 14/27 [00:00<00:00, 24.41it/s, Get variable types]      Summarize dataset:  56% 15/27 [00:00<00:00, 24.41it/s, Calculate pearson correlation]Summarize dataset:  59% 16/27 [00:00<00:00, 24.41it/s, Calculate spearman correlation]Summarize dataset:  63% 17/27 [00:00<00:00, 24.41it/s, Calculate kendall correlation] Summarize dataset:  67% 18/27 [00:00<00:00, 31.55it/s, Calculate kendall correlation]Summarize dataset:  67% 18/27 [00:00<00:00, 31.55it/s, Calculate phi_k correlation]  Summarize dataset:  70% 19/27 [00:01<00:00, 31.55it/s, Calculate cramers correlation]Summarize dataset:  74% 20/27 [00:02<00:00, 31.55it/s, Get scatter matrix]           Summarize dataset:  74% 20/27 [00:15<00:00, 31.55it/s, Get scatter matrix]Summarize dataset:  78% 21/27 [00:27<00:14,  2.40s/it, Get scatter matrix]Summarize dataset:  78% 21/27 [00:27<00:14,  2.40s/it, Get table statistics]Summarize dataset:  81% 22/27 [00:27<00:12,  2.40s/it, Get missing diagrams]Summarize dataset:  85% 23/27 [00:30<00:09,  2.27s/it, Get missing diagrams]Summarize dataset:  85% 23/27 [00:30<00:09,  2.27s/it, Take sample]         Summarize dataset:  89% 24/27 [00:30<00:06,  2.27s/it, Locating duplicates]Summarize dataset:  93% 25/27 [00:30<00:04,  2.27s/it, Get messages/warnings]Summarize dataset:  96% 26/27 [00:30<00:02,  2.27s/it, Get reproduction details]Summarize dataset: 100% 27/27 [00:31<00:00,  1.45s/it, Get reproduction details]Summarize dataset: 100% 27/27 [00:31<00:00,  1.45s/it, Completed]               Summarize dataset: 100% 27/27 [00:31<00:00,  1.15s/it, Completed]
+Generate report structure:   0% 0/1 [00:00<?, ?it/s]Generate report structure: 100% 1/1 [00:19<00:00, 19.58s/it]Generate report structure: 100% 1/1 [00:19<00:00, 19.61s/it]
+Render HTML:   0% 0/1 [00:00<?, ?it/s]Render HTML: 100% 1/1 [00:06<00:00,  6.26s/it]Render HTML: 100% 1/1 [00:06<00:00,  6.26s/it]
+Export report to file:   0% 0/1 [00:00<?, ?it/s]Export report to file: 100% 1/1 [00:00<00:00, 66.14it/s]
+[2021-04-15 21:32:41+0000] INFO - prefect.TaskRunner | Task 'mon': Finished task run for task with final state: 'Success'
+[2021-04-15 21:32:41+0000] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded
+Thu 15 Apr 2021 09:40:21 PM UTC
+/usr/app/src/main.py:15: FutureWarning: Passing a negative integer is deprecated in version 1.0 and will not be supported in future version. Instead, use None to not limit the column width.
+  pd.set_option("display.max_colwidth", -1)
+[2021-04-15 21:40:44+0000] INFO - prefect.FlowRunner | Beginning Flow run for 'greenhouse'
+[2021-04-15 21:40:44+0000] INFO - prefect.TaskRunner | Task 'sourcing': Starting task run...
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'sourcing': Finished task run for task with final state: 'Success'
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'cleansing': Starting task run...
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'cleansing': Finished task run for task with final state: 'Success'
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'normalizing': Starting task run...
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'normalizing': Finished task run for task with final state: 'Success'
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'splitting': Starting task run...
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'splitting': Finished task run for task with final state: 'Success'
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'splitting[0]': Starting task run...
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'splitting[0]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'splitting[1]': Starting task run...
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'splitting[1]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'splitting[2]': Starting task run...
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'splitting[2]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:40:45+0000] INFO - prefect.TaskRunner | Task 'monitor': Starting task run...
+Summarize dataset:   0% 0/20 [00:00<?, ?it/s]Summarize dataset:   0% 0/20 [00:00<?, ?it/s, Describe variable:bill_length_mm]Summarize dataset:   5% 1/20 [00:00<00:02,  9.04it/s, Describe variable:bill_depth_mm]Summarize dataset:  10% 2/20 [00:00<00:01, 18.00it/s, Describe variable:bill_depth_mm]Summarize dataset:  10% 2/20 [00:00<00:01, 18.00it/s, Describe variable:df_index]     Summarize dataset:  15% 3/20 [00:00<00:00, 18.00it/s, Describe variable:flipper_length_mm]Summarize dataset:  20% 4/20 [00:00<00:00, 18.00it/s, Describe variable:body_mass_g]      Summarize dataset:  25% 5/20 [00:00<00:00, 24.27it/s, Describe variable:body_mass_g]Summarize dataset:  25% 5/20 [00:00<00:00, 24.27it/s, Describe variable:sex]        Summarize dataset:  30% 6/20 [00:00<00:00, 24.27it/s, Describe variable:species]Summarize dataset:  35% 7/20 [00:00<00:00, 24.27it/s, Get variable types]       Summarize dataset:  40% 8/20 [00:00<00:00, 24.27it/s, Calculate pearson correlation]Summarize dataset:  45% 9/20 [00:00<00:00, 24.27it/s, Calculate spearman correlation]Summarize dataset:  50% 10/20 [00:00<00:00, 24.27it/s, Calculate kendall correlation]Summarize dataset:  55% 11/20 [00:00<00:00, 24.27it/s, Calculate phi_k correlation]  Summarize dataset:  60% 12/20 [00:05<00:04,  1.74it/s, Calculate phi_k correlation]Summarize dataset:  60% 12/20 [00:05<00:04,  1.74it/s, Calculate cramers correlation]Summarize dataset:  65% 13/20 [00:05<00:04,  1.74it/s, Get scatter matrix]           Summarize dataset:  70% 14/20 [00:12<00:07,  1.23s/it, Get scatter matrix]Summarize dataset:  70% 14/20 [00:12<00:07,  1.23s/it, Get table statistics]Summarize dataset:  75% 15/20 [00:13<00:06,  1.23s/it, Get missing diagrams]Summarize dataset:  80% 16/20 [00:16<00:05,  1.33s/it, Get missing diagrams]Summarize dataset:  80% 16/20 [00:16<00:05,  1.33s/it, Take sample]         Summarize dataset:  85% 17/20 [00:16<00:03,  1.33s/it, Locating duplicates]Summarize dataset:  90% 18/20 [00:16<00:02,  1.33s/it, Get messages/warnings]Summarize dataset:  95% 19/20 [00:16<00:01,  1.33s/it, Get reproduction details]Summarize dataset: 100% 20/20 [00:16<00:00,  1.33s/it, Completed]               Summarize dataset: 100% 20/20 [00:16<00:00,  1.22it/s, Completed]
+Generate report structure:   0% 0/1 [00:00<?, ?it/s]Generate report structure: 100% 1/1 [00:09<00:00,  9.48s/it]Generate report structure: 100% 1/1 [00:09<00:00,  9.48s/it]
+Render HTML:   0% 0/1 [00:00<?, ?it/s]Render HTML: 100% 1/1 [00:02<00:00,  2.53s/it]Render HTML: 100% 1/1 [00:02<00:00,  2.53s/it]
+Export report to file:   0% 0/1 [00:00<?, ?it/s]Export report to file: 100% 1/1 [00:00<00:00, 175.14it/s]
+[2021-04-15 21:41:14+0000] INFO - prefect.TaskRunner | Task 'monitor': Finished task run for task with final state: 'Success'
+[2021-04-15 21:41:14+0000] INFO - prefect.TaskRunner | Task 'one_hot': Starting task run...
+[2021-04-15 21:41:14+0000] INFO - prefect.one_hot |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex    species
+141  40.6            17.2           187.0              3475.0       male    Adelie   
+6    38.9            17.8           181.0              3625.0       female  Adelie   
+60   35.7            16.9           185.0              3150.0       female  Adelie   
+249  46.9            14.6           222.0              4875.0       female  Gentoo   
+54   34.5            18.1           187.0              2900.0       female  Adelie   
+..    ...             ...             ...                 ...          ...     ...   
+148  36.0            17.8           195.0              3450.0       female  Adelie   
+143  40.7            17.0           190.0              3725.0       male    Adelie   
+180  48.2            14.3           210.0              4600.0       female  Gentoo   
+131  43.1            19.2           197.0              3500.0       male    Adelie   
+306  40.9            16.6           187.0              3200.0       female  Chinstrap
+
+[275 rows x 6 columns]
+[2021-04-15 21:41:14+0000] INFO - prefect.one_hot |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g     sex    species  sex_male  sex_female  sex_na
+141  40.6            17.2           187.0              3475.0       male    Adelie     1         0           0     
+6    38.9            17.8           181.0              3625.0       female  Adelie     0         1           0     
+60   35.7            16.9           185.0              3150.0       female  Adelie     0         1           0     
+249  46.9            14.6           222.0              4875.0       female  Gentoo     0         1           0     
+54   34.5            18.1           187.0              2900.0       female  Adelie     0         1           0     
+..    ...             ...             ...                 ...          ...     ...    ..        ..          ..     
+148  36.0            17.8           195.0              3450.0       female  Adelie     0         1           0     
+143  40.7            17.0           190.0              3725.0       male    Adelie     1         0           0     
+180  48.2            14.3           210.0              4600.0       female  Gentoo     0         1           0     
+131  43.1            19.2           197.0              3500.0       male    Adelie     1         0           0     
+306  40.9            16.6           187.0              3200.0       female  Chinstrap  0         1           0     
+
+[275 rows x 9 columns]
+[2021-04-15 21:41:14+0000] INFO - prefect.TaskRunner | Task 'one_hot': Finished task run for task with final state: 'Success'
+[2021-04-15 21:41:14+0000] INFO - prefect.TaskRunner | Task 'one_hot[0]': Starting task run...
+[2021-04-15 21:41:14+0000] INFO - prefect.TaskRunner | Task 'one_hot[0]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:41:14+0000] INFO - prefect.TaskRunner | Task 'one_hot[1]': Starting task run...
+[2021-04-15 21:41:14+0000] INFO - prefect.TaskRunner | Task 'one_hot[1]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:41:14+0000] INFO - prefect.TaskRunner | Task 'one_hot[2]': Starting task run...
+[2021-04-15 21:41:14+0000] INFO - prefect.TaskRunner | Task 'one_hot[2]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:41:14+0000] INFO - prefect.TaskRunner | Task 'imputation': Starting task run...
+[2021-04-15 21:41:14+0000] INFO - prefect.imputation |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g  sex species  sex_male  sex_female  sex_na
+141 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+6   NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+60  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+249 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+54  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+..   ..              ..             ..                 ..           ...  ...     ..        ..          ..    
+148 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+143 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+180 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+131 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+306 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN    
+
+[275 rows x 9 columns]
+[2021-04-15 21:41:14+0000] INFO - prefect.imputation |      bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g  sex species  sex_male  sex_female  sex_na  bill_length_mm_imputed  bill_depth_mm_imputed  flipper_length_mm_imputed  body_mass_g_imputed
+141 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+6   NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+60  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+249 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+54  NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+..   ..              ..             ..                 ..           ...  ...     ..        ..          ..      ..                      ..                     ..                         ..                 
+148 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+143 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+180 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+131 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+306 NaN             NaN            NaN                NaN           NaN  NaN    NaN       NaN         NaN     NaN                     NaN                    NaN                        NaN                 
+
+[275 rows x 13 columns]
+[2021-04-15 21:41:15+0000] INFO - prefect.TaskRunner | Task 'imputation': Finished task run for task with final state: 'Success'
+[2021-04-15 21:41:15+0000] INFO - prefect.TaskRunner | Task 'imputation[0]': Starting task run...
+[2021-04-15 21:41:15+0000] INFO - prefect.TaskRunner | Task 'imputation[0]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:41:15+0000] INFO - prefect.TaskRunner | Task 'imputation[1]': Starting task run...
+[2021-04-15 21:41:15+0000] INFO - prefect.TaskRunner | Task 'imputation[1]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:41:15+0000] INFO - prefect.TaskRunner | Task 'imputation[2]': Starting task run...
+[2021-04-15 21:41:15+0000] INFO - prefect.TaskRunner | Task 'imputation[2]': Finished task run for task with final state: 'Success'
+[2021-04-15 21:41:15+0000] INFO - prefect.TaskRunner | Task 'monitor': Starting task run...
+Summarize dataset:   0% 0/27 [00:00<?, ?it/s]Summarize dataset:   0% 0/27 [00:00<?, ?it/s, Describe variable:bill_length_mm]Summarize dataset:   4% 1/27 [00:00<00:03,  8.39it/s, Describe variable:bill_length_mm]Summarize dataset:   4% 1/27 [00:00<00:03,  8.39it/s, Describe variable:df_index]      Summarize dataset:   7% 2/27 [00:00<00:02,  8.39it/s, Describe variable:bill_depth_mm]Summarize dataset:  11% 3/27 [00:00<00:02,  8.39it/s, Describe variable:flipper_length_mm]Summarize dataset:  15% 4/27 [00:00<00:02,  8.39it/s, Describe variable:body_mass_g]      Summarize dataset:  19% 5/27 [00:00<00:01, 20.93it/s, Describe variable:body_mass_g]Summarize dataset:  19% 5/27 [00:00<00:01, 20.93it/s, Describe variable:sex]        Summarize dataset:  22% 6/27 [00:00<00:01, 20.93it/s, Describe variable:species]Summarize dataset:  26% 7/27 [00:00<00:00, 20.93it/s, Describe variable:sex_male]Summarize dataset:  30% 8/27 [00:00<00:01, 17.38it/s, Describe variable:sex_male]Summarize dataset:  30% 8/27 [00:00<00:01, 17.38it/s, Describe variable:bill_length_mm_imputed]Summarize dataset:  33% 9/27 [00:00<00:01, 17.38it/s, Describe variable:sex_female]            Summarize dataset:  37% 10/27 [00:00<00:00, 17.38it/s, Describe variable:bill_depth_mm_imputed]Summarize dataset:  41% 11/27 [00:00<00:00, 17.38it/s, Describe variable:sex_na]               Summarize dataset:  44% 12/27 [00:00<00:00, 22.54it/s, Describe variable:sex_na]Summarize dataset:  44% 12/27 [00:00<00:00, 22.54it/s, Describe variable:flipper_length_mm_imputed]Summarize dataset:  48% 13/27 [00:00<00:00, 22.54it/s, Describe variable:body_mass_g_imputed]      Summarize dataset:  52% 14/27 [00:00<00:00, 22.54it/s, Get variable types]                   Summarize dataset:  56% 15/27 [00:00<00:00, 22.54it/s, Calculate pearson correlation]Summarize dataset:  59% 16/27 [00:00<00:00, 22.54it/s, Calculate spearman correlation]Summarize dataset:  63% 17/27 [00:00<00:00, 22.54it/s, Calculate kendall correlation] Summarize dataset:  67% 18/27 [00:00<00:00, 32.14it/s, Calculate kendall correlation]Summarize dataset:  67% 18/27 [00:00<00:00, 32.14it/s, Calculate phi_k correlation]  Summarize dataset:  70% 19/27 [00:01<00:00, 32.14it/s, Calculate cramers correlation]Summarize dataset:  74% 20/27 [00:02<00:00, 32.14it/s, Get scatter matrix]           Summarize dataset:  74% 20/27 [00:20<00:00, 32.14it/s, Get scatter matrix]Summarize dataset:  78% 21/27 [00:24<00:13,  2.17s/it, Get scatter matrix]Summarize dataset:  78% 21/27 [00:24<00:13,  2.17s/it, Get table statistics]Summarize dataset:  81% 22/27 [00:25<00:10,  2.17s/it, Get missing diagrams]Summarize dataset:  85% 23/27 [00:27<00:07,  1.98s/it, Get missing diagrams]Summarize dataset:  85% 23/27 [00:27<00:07,  1.98s/it, Take sample]         Summarize dataset:  89% 24/27 [00:27<00:05,  1.98s/it, Locating duplicates]Summarize dataset:  93% 25/27 [00:27<00:03,  1.98s/it, Get messages/warnings]Summarize dataset:  96% 26/27 [00:27<00:01,  1.98s/it, Get reproduction details]Summarize dataset: 100% 27/27 [00:27<00:00,  1.98s/it, Completed]               Summarize dataset: 100% 27/27 [00:27<00:00,  1.02s/it, Completed]
+Generate report structure:   0% 0/1 [00:00<?, ?it/s]Generate report structure: 100% 1/1 [00:14<00:00, 14.25s/it]Generate report structure: 100% 1/1 [00:14<00:00, 14.25s/it]
+Render HTML:   0% 0/1 [00:00<?, ?it/s]Render HTML: 100% 1/1 [00:05<00:00,  5.01s/it]Render HTML: 100% 1/1 [00:05<00:00,  5.01s/it]
+Export report to file:   0% 0/1 [00:00<?, ?it/s]Export report to file: 100% 1/1 [00:00<00:00, 50.65it/s]
+[2021-04-15 21:42:02+0000] INFO - prefect.TaskRunner | Task 'monitor': Finished task run for task with final state: 'Success'
+[2021-04-15 21:42:02+0000] INFO - prefect.FlowRunner | Flow run SUCCESS: all reference tasks succeeded

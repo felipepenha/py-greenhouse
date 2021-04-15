@@ -2,6 +2,7 @@ import data_sourcing
 import data_splitting
 import data_preprocessing
 import feature_engineering
+import monitoring
 
 from prefect import Flow, task, context
 
@@ -88,6 +89,14 @@ def imputation(train, valid, test, cols, imputation_method):
     return train, valid, test
 
 
+@task
+def monitor(df, path):
+
+    monitoring.export(df, path)
+
+    pass
+
+
 # Define prefect flow
 with Flow("greenhouse") as flow:
 
@@ -95,6 +104,8 @@ with Flow("greenhouse") as flow:
     df = cleansing(df)
     df = normalizing(df)
     train, valid, test = splitting(df)
+
+    monitor(train, "monitor/monitor_before_feat_eng.html")
 
     # Categorical
     cat_cols = [
@@ -124,6 +135,7 @@ with Flow("greenhouse") as flow:
         imputation_method="median",
     )
 
+    monitor(train, "monitor/monitor_after_feat_eng.html")
 
 if __name__ == "__main__":
 

@@ -138,4 +138,7 @@ dmypy.json
 cython_debug/
 
 # Local logs of the project
-logs/*.txt
+logs/
+
+# Local monitoring reorts of the project
+monitor/
