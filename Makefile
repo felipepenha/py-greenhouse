@@ -63,10 +63,12 @@ install-requirements:
 	pre-commit autoupdate
 
 build:
+	mkdir --parents monitor
 	mkdir --parents logs
 	$(BUILD)
 
 build-no-cache:
+	mkdir --parents monitor
 	mkdir --parents logs
 	$(BUILD) --no-cache
 
