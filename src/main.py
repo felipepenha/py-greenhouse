@@ -3,6 +3,7 @@ import data_splitting
 import data_preprocessing
 import feature_engineering
 import monitoring
+import modeling
 
 from prefect import Flow, task, context
 
@@ -97,6 +98,12 @@ def monitor(df, path):
     pass
 
 
+@task
+def model(train, valid, test, y_col, x_col):
+
+    return modeling.fit_transform(train, valid, test, y_col, x_col)
+
+
 # Define prefect flow
 with Flow("greenhouse") as flow:
 
@@ -105,7 +112,7 @@ with Flow("greenhouse") as flow:
     df = normalizing(df)
     train, valid, test = splitting(df)
 
-    monitor(train, "monitor/monitor_before_feat_eng.html")
+    # monitor(train, "monitor/monitor_before_feat_eng.html")
 
     # Categorical
     cat_cols = [
@@ -135,7 +142,21 @@ with Flow("greenhouse") as flow:
         imputation_method="median",
     )
 
-    monitor(train, "monitor/monitor_after_feat_eng.html")
+    # monitor(train, "monitor/monitor_after_feat_eng.html")
+
+    y_col = ["species"]
+
+    x_col = [
+        "sex_male",
+        "sex_female",
+        "sex_na",
+        "bill_length_mm_imputed",
+        "bill_depth_mm_imputed",
+        "flipper_length_mm_imputed",
+        "body_mass_g_imputed",
+    ]
+
+    model(train, valid, test, y_col, x_col)
 
 if __name__ == "__main__":
 
