@@ -112,7 +112,7 @@ with Flow("greenhouse") as flow:
     df = normalizing(df)
     train, valid, test = splitting(df)
 
-    # monitor(train, "monitor/monitor_before_feat_eng.html")
+    monitor(train, "monitor/monitor_before_feat_eng.html")
 
     # Categorical
     cat_cols = [
@@ -142,7 +142,7 @@ with Flow("greenhouse") as flow:
         imputation_method="median",
     )
 
-    # monitor(train, "monitor/monitor_after_feat_eng.html")
+    monitor(train, "monitor/monitor_after_feat_eng.html")
 
     y_col = ["species"]
 
