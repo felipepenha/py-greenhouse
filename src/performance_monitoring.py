@@ -1,12 +1,13 @@
-import time
 import numpy as np
 from sklearn import metrics
 import json
 
+import greenhouse_clock
+
 meta = {}
 
 # Timestamp for files
-meta["timestr"] = time.strftime("%Y%m%d%H%M%S")
+meta["timestr"] = greenhouse_clock.get_time()
 
 
 def optimal_threshold(y_true, y_score):
@@ -25,7 +26,7 @@ def optimal_threshold(y_true, y_score):
     return thr[diff_idx]
 
 
-def export(y_true, y_score, path, opt_thr=0.5, suffix="_"):
+def report_performance(y_true, y_score, path, opt_thr=0.5, suffix="_"):
     """
     References
     ----------
@@ -63,8 +64,7 @@ def export(y_true, y_score, path, opt_thr=0.5, suffix="_"):
     filename = "{0}/{1}_metadata{2}.json".format(path, meta["timestr"], suffix)
 
     # Export to JSON
-    with open(filename, "w") as fp:
+    with open(filename, "a") as fp:
         json.dump(meta, fp, indent=4)
 
-
-pass
+    pass

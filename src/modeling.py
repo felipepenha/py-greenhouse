@@ -18,7 +18,9 @@ def fit_transform(train, valid, test, y_col, x_col, seed=1):
     y_valid = le.transform(valid[y_col].values.ravel())
     y_test = le.transform(test[y_col].values.ravel())
 
-    clf = RandomForestClassifier(max_depth=3, n_estimators=300, random_state=seed)
+    clf = RandomForestClassifier(
+        max_features=2, max_depth=4, n_estimators=1000, random_state=seed
+    )
 
     # Trin model over training set
     clf.fit(x_train, y_train.ravel())
