@@ -26,13 +26,17 @@ def optimal_threshold(y_true, y_score):
     return thr[diff_idx]
 
 
-def report_performance(y_true, y_score, path, opt_thr=0.5, suffix="_"):
+def report_performance(
+    y_true, y_score, best_hyperparams, path, opt_thr=0.5, suffix="_"
+):
     """
     References
     ----------
     https://scikit-learn.org/stable/modules/generated/
     sklearn.metrics.classification_report.html
     """
+
+    meta["optimal_hyperparameters"] = best_hyperparams
 
     meta["optimal_threshold"] = opt_thr
 
