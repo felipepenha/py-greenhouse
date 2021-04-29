@@ -101,7 +101,7 @@ def eda(df, path, preffix, suffix):
     pass
 
 
-@task(nout=3)
+@task(nout=4)
 def model(train, valid, test, y_col, x_col):
 
     return modeling.fit_transform(train, valid, test, y_col, x_col)
@@ -114,10 +114,15 @@ def threshold(y_true, y_score):
 
 
 @task
-def performance(y_true, y_score, path, opt_thr, suffix):
+def performance(y_true, y_score, best_hyperparams, path, opt_thr, suffix):
 
     return performance_monitoring.report_performance(
-        y_true=y_true, y_score=y_score, path=path, opt_thr=opt_thr, suffix=suffix
+        y_true=y_true,
+        y_score=y_score,
+        best_hyperparams=best_hyperparams,
+        path=path,
+        opt_thr=opt_thr,
+        suffix=suffix,
     )
 
 
@@ -197,7 +202,7 @@ with Flow("greenhouse") as flow:
         "body_mass_g_imputed",
     ]
 
-    train, valid, test = model(train, valid, test, y_col, x_col)
+    train, valid, test, best_hyperparams = model(train, valid, test, y_col, x_col)
 
     # Obtain the optimal threshold of
     # class 0 vs 1+2
@@ -222,6 +227,7 @@ with Flow("greenhouse") as flow:
     performance(
         y_true=binarize(binary_map=binary_map, series=train["actual"]),
         y_score=train["prob_0"],
+        best_hyperparams=best_hyperparams,
         path="monitor/",
         opt_thr=opt_thr,
         suffix="_train",
@@ -231,6 +237,7 @@ with Flow("greenhouse") as flow:
     performance(
         y_true=binarize(binary_map=binary_map, series=valid["actual"]),
         y_score=valid["prob_0"],
+        best_hyperparams=best_hyperparams,
         path="monitor/",
         opt_thr=opt_thr,
         suffix="_valid",
@@ -240,6 +247,7 @@ with Flow("greenhouse") as flow:
     performance(
         y_true=binarize(binary_map=binary_map, series=test["actual"]),
         y_score=test["prob_0"],
+        best_hyperparams=best_hyperparams,
         path="monitor/",
         opt_thr=opt_thr,
         suffix="_test",
