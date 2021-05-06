@@ -1,7 +1,8 @@
 # Contributing
 
-These contributing guidelines were designed both for the original [Greenhouse repo template](https://github.com/felipepenha/py-greenhouse) and any Python packages derived from that template.
+These contributing guidelines were designed both for the original [Greenhouse repo template](https://github.com/felipepenha/py-greenhouse) and any Python projects derived from that template.
 
+If you just want to use the Greenhouse template for your new cool Data X or Machine Learning project, please choose the option ["Use this Template"](https://github.com/felipepenha/py-greenhouse/generate).
 
 # Bugs, questions, or suggestions
 

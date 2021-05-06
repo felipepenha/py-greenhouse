@@ -1,11 +1,24 @@
 ![](/images/greenhouse_github_card_v02.png)
 
 # py-greenhouse
+
 A containerized Python framework for a better Data X development workflow. Where X = Science, Engineering, Analytics, etc.
 
 The name "Greenhouse" is a metaphor. A greenhouse is a structure made of glass to grow plants despite of external conditions such as a cold winter. Likewise, the Greenhouse framework builds a standalone container for Rust developmet which is fully transparent to the user.
 
+[Watch an overview clip on Twitch! 🖥️💜🖥️💜](https://www.twitch.tv/videos/1013347420)
+
 ![](/images/greenhouse_architecture_v02.png)
+
+
+# But what is a template?
+
+`py-greenhouse` is a GitHub template, not a package. This means that you will work on a copy of this project and you will replace placeholders by code that fits your own purposes.
+
+If you just want to use the Greenhouse template for your new cool Data X or Machine Learning project, please choose the option ["Use this Template"](https://github.com/felipepenha/py-greenhouse/generate).
+
+The current version of `py-greenhouse` uses the [Palmer Penguins dataset](https://github.com/mcnakhaee/palmerpenguins) called via an API (see [`src/data_sourcing.py`](https://github.com/felipepenha/py-greenhouse/blob/main/src/data_sourcing.py)). You may use other datasets, coming from different sources, and you may need to setup keys for cloud environment access, all of which are not covered here.
+
 
 # Local OS Requirements
 
@@ -119,7 +132,11 @@ COMMANDS
     bash            bash REPL (Read-Eval-Print loop), suitable for debugging
     python3         access Python through the REPL (Read-Eval-Print loop)
     jupyter         access Python through the Jupyter Notebook
-    release         Release on the dev branch
+    test            run all tests using pytest (from within the container)
+    run             run src/main.py
+    pre-commit      early run of pre-commit git hooks
+    add-commit      git add, pre-commit, and commit
+    release         release on dev branch. Be sure to update version.toml before running this operation
 
 ```
 
@@ -181,38 +198,50 @@ Check out additional examples in the `/notebooks` directory (`.ipynb` files with
 ├── CONTRIBUTING.md
 ├── docker-compose.yml
 ├── Dockerfile
+├── examples
+├── flow
 ├── images
 ├── LICENSE
+├── logs
 ├── Makefile
+├── monitor
 ├── README.md
 ├── requirements.txt
 ├── src
-│   ├── hello_world.py
-│   ├── __init__.py
-│   └── main.py
+│   ├── data_preprocessing.py
+│   ├── data_sourcing.py
+│   ├── data_splitting.py
+│   ├── eda_monitoring.py
+│   ├── feature_engineering.py
+│   ├── greenhouse_clock.py
+│   ├── main.py
+│   ├── modeling.py
+│   ├── performance_monitoring.py
 ├── tests
-│   └── test_hello.py
+│   ├── test_data_sourcing.py
+│   ├── test_data_splitting.py
+│   └── test_feature_engineering.py
 └── version.toml
 ```
 
+Highlights:
 
-* `src/`: source directory for your Python package
-* `test/`: tests of Python code. All tests will run automatically as pre-commit git hooks.
 * `examples/`: examples, usually Jupyter Notebooks not in production
-* `version.toml`: information about your project, such as the version number to be used in the git tag pushed to the repo with `make release`.
+* `logs/`: dated logs, usually `.txt` files
+* `monitor/`: files exported for monitoring purposes (data, model performance, etc). usually `.html` or `.json`.
+* `flow/`: flow diagram as provided by `prefect`
 * `requirements.txt`: pip3 requirements for your project
+* `src/`: source directory for your Python project
+* `src/main.py`: main file where flow is defined
+* `test/`: tests of Python code. All tests will run automatically as pre-commit git hooks, in the container.
+* `version.toml`: information about your project, such as the version number to be used in the git tag pushed to the repo with `make release`.
+
 
 
 # Adding External Dependencies
 
-You need to include any external dependencies to the `requirements.txt` file in addition to the default list:
+You need to include any external dependencies to the `requirements.txt` file in addition to the default list provided here.
 
-```
-jupyterlab==3.0.9
-numpy==1.20.1
-pandas==1.2.2
-pytest==6.2.2
-```
 
 ## Continuous Integration / Continuous Delivery (CI/CD)
 
