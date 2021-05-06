@@ -8,7 +8,7 @@ The name "Greenhouse" is a metaphor. A greenhouse is a structure made of glass t
 
 [Watch an overview clip on Twitch! 🖥️💜🖥️💜](https://www.twitch.tv/videos/1013368507)
 
-![](/images/greenhouse_architecture_v02.png)
+![](/images/greenhouse_architecture_v03.png)
 
 
 # But what is a template?
