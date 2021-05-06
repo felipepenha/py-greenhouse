@@ -6,7 +6,7 @@ A containerized Python framework for a better Data X development workflow. Where
 
 The name "Greenhouse" is a metaphor. A greenhouse is a structure made of glass to grow plants despite of external conditions such as a cold winter. Likewise, the Greenhouse framework builds a standalone container for Rust developmet which is fully transparent to the user.
 
-[Watch an overview clip on Twitch! 🖥️💜🖥️💜](https://www.twitch.tv/videos/1013347420)
+[Watch an overview clip on Twitch! 🖥️💜🖥️💜](https://www.twitch.tv/videos/1013368507)
 
 ![](/images/greenhouse_architecture_v02.png)
 
