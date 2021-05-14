@@ -101,10 +101,18 @@ def eda(df, path, preffix, suffix):
     pass
 
 
-@task(nout=4)
-def model(train, valid, test, y_col, x_col):
+@task(nout=5)
+def model(train, valid, test, obs, y_col, x_col):
 
-    return modeling.fit_transform(train, valid, test, y_col, x_col)
+    mo = modeling.model()
+
+    mo.fit(train=train, y_col=y_col, x_col=x_col)
+
+    lst = list(mo.transform_sets(train=train, valid=valid, test=test))
+
+    lst.append(mo.transform_new(obs=obs))
+
+    return lst
 
 
 @task
@@ -136,6 +144,14 @@ def binarize(binary_map, series):
 def print_out(s):
 
     print(s)
+
+    pass
+
+
+@task
+def df_to_csv(df, filename):
+
+    df.to_csv(filename)
 
     pass
 
@@ -202,7 +218,21 @@ with Flow("greenhouse") as flow:
         "body_mass_g_imputed",
     ]
 
-    train, valid, test, best_hyperparams = model(train, valid, test, y_col, x_col)
+    # `obs=test` just as an example here.
+    # It should be actually new data, unseen by the model.
+    train, valid, test, best_hyperparams, new = model(
+        train=train,
+        valid=valid,
+        test=test,
+        obs=test,
+        y_col=y_col,
+        x_col=x_col,
+    )
+
+    path = "data/"
+    filename = path + "{}_predict_new.csv".format(start_time)
+
+    df_to_csv(df=new, filename=filename)
 
     # Obtain the optimal threshold of
     # class 0 vs 1+2
@@ -217,11 +247,6 @@ with Flow("greenhouse") as flow:
         1: 0,
         2: 0,
     }
-
-    # Convert to binary
-
-    # valid["actual_binary"] = binarize(binary_map=binary_map, series=valid["actual"])
-    # test["actual_binary"] = binarize(binary_map=binary_map, series=test["actual"])
 
     # Performance report over training set
     performance(
