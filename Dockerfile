@@ -16,4 +16,7 @@ RUN apt-get update \
 # pip requirements
 COPY requirements.txt ${APP_DIR}
 
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip \
+    && pip3 install --no-cache-dir -r requirements.txt
+
+CMD ["python3", "src/main.py"]

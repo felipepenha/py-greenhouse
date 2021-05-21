@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import RandomizedSearchCV
+import joblib
 
 
 class model:
@@ -45,6 +46,10 @@ class model:
 
         # Train model over training set
         (self.clf_random).fit(x_train, y_train.ravel())
+
+        path = "/usr/app/models/clf_random.joblib"
+
+        joblib.dump(self.clf_random, path)
 
     def transform_sets(self, train, valid, test):
 
