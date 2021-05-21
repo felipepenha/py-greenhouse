@@ -65,6 +65,7 @@ install-requirements:
 build:
 	mkdir --parents monitor
 	mkdir --parents logs
+	mkdir --parent models
 	$(BUILD)
 
 build-no-cache:
@@ -80,6 +81,9 @@ python3:
 
 jupyter:
 	$(RUN) --service-ports jupyter
+
+fastapi:
+	$(RUN) --service-ports fastapi
 
 test-no-log:
 	$(RUN) test

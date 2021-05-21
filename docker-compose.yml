@@ -39,6 +39,17 @@ services:
     ports:
       - 8888:8888
 
+  fastapi:
+    image: base_image
+    user: root
+    volumes:
+      - .:/usr/app/
+    working_dir: /usr/app/
+    command: >
+      uvicorn api.main:app --reload --host 0.0.0.0
+    ports:
+      - 8000:8000
+
   test:
     image: base_image
     user: root
