@@ -40,17 +40,18 @@ help:
 	@echo
 	@echo "COMMANDS"
 	@echo
+	@echo "    add-commit      git add, pre-commit, and commit"
+	@echo "    bash            bash REPL (Read-Eval-Print loop), suitable for debugging"
 	@echo "    build           build image using cache"
 	@echo "    build-no-cache  build image from scratch, and not from cache"
-	@echo "    bash            bash REPL (Read-Eval-Print loop), suitable for debugging"
-	@echo "    python3         access Python through the REPL (Read-Eval-Print loop)"
+	@echo "    fastapi         starts up fastapi"
 	@echo "    jupyter         access Python through the Jupyter Notebook"
-	@echo "    test            run all tests using pytest (from within the container)"
-	@echo "    run             run src/main.py"
 	@echo "    pre-commit      early run of pre-commit git hooks"
-	@echo "    add-commit      git add, pre-commit, and commit"
+	@echo "    python3         access Python through the REPL (Read-Eval-Print loop)"
 	@echo "    release         release on dev branch. \
 	Be sure to update version.toml before running this operation"
+	@echo "    run             run src/main.py"
+	@echo "    test            run all tests using pytest (from within the container)"
 
 #################
 # User Commands #
