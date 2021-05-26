@@ -140,5 +140,11 @@ cython_debug/
 # Local logs of the project
 logs/
 
-# Local monitoring reorts of the project
+# Local monitoring reports of the project
 monitor/
+
+# Data directory
+data/
+
+# Models directory
+models/

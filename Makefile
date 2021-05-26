@@ -27,7 +27,6 @@
 BUILD = docker-compose build
 RUN = docker-compose run
 VERSION = $(shell awk -F ' = ' '$$1 ~ /version/ { gsub(/[\"]/, "", $$2); printf("%s",$$2) }' version.toml)
-LOG = true
 
 help:
 	@echo "USAGE"
