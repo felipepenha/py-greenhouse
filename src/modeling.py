@@ -23,6 +23,10 @@ class model:
         # Trin encoder over training set
         (self.le).fit(train[self.y_col].values.ravel())
 
+        path = "/usr/app/models/label_encoder.joblib"
+
+        joblib.dump(self.le, path)
+
         y_train = (self.le).transform(train[self.y_col].values.ravel())
 
         # Store the grid in a dictionary

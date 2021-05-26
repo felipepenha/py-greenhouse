@@ -9,29 +9,25 @@ app = FastAPI()
 
 class ModelIn(BaseModel):
     sex: str
-    bill_length_mm: float
-    bill_depth_mm: float
-    flipper_length_mm: float
-    body_mass_g: float
+    bill_length_mm: str
+    bill_depth_mm: str
+    flipper_length_mm: str
+    body_mass_g: str
 
 
 class ModelOut(BaseModel):
     prob_0: float
     prob_1: float
     prob_2: float
-    species: int
+    species_code: int
+    species_name: str
 
 
 app = FastAPI()
 
 
 @app.post(
-    "/predict"
-    "/{sex}"
-    "/{bill_length_mm}"
-    "/{bill_depth_mm}"
-    "/{flipper_length_mm}"
-    "/{body_mass_g}",
+    "/predict/",
     response_model=ModelOut,
 )
 async def root(input: ModelIn):
@@ -62,19 +58,23 @@ async def root(input: ModelIn):
         model.predict_proba(X)
     )
 
-    print(out_dict["prob_0"])
-
     out_dict["prob_0"] = out_dict["prob_0"][0]
-
-    print(out_dict["prob_0"])
 
     out_dict["prob_1"] = out_dict["prob_1"][0]
     out_dict["prob_2"] = out_dict["prob_2"][0]
 
-    print(model.predict(X))
+    encoder = joblib.load("/usr/app/models/label_encoder.joblib")
 
-    out_dict["species"] = model.predict(X)[0]
+    # Recover classes
+    classes = encoder.classes_
 
-    print(out_dict["species"])
+    # Enumerate classes to recover codes (integers)
+    # Convert enumerate to dictionary
+    map_classes = dict(enumerate(classes))
+
+    code = model.predict(X)[0]
+
+    out_dict["species_code"] = int(code)
+    out_dict["species_name"] = map_classes[code]
 
     return out_dict
