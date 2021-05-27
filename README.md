@@ -97,6 +97,12 @@ The main directory may be either the locally cloned py-greenhouse or a project b
 
 Alternatively, simply run in the terminal `make install-requirements`, to install the `pre-commit` Python package.
 
+## - [dvc](https://dvc.org/doc/install/linux)
+
+```
+pip3 install dvc
+```
+
 ## Do I need to install any other requirements?
 
 No. After installing the basic local requirements described above, you are all set to run everything else inside a Docker container.
