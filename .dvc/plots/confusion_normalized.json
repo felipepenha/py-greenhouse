@@ -1,0 +1,112 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "values": "<DVC_METRIC_DATA>"
+  },
+  "facet": {
+    "field": "rev",
+    "type": "nominal"
+  },
+  "spec": {
+    "encoding": {
+      "x": {
+        "field": "<DVC_METRIC_X>",
+        "sort": "ascending",
+        "title": "<DVC_METRIC_X_LABEL>",
+        "type": "nominal"
+      },
+      "y": {
+        "field": "<DVC_METRIC_Y>",
+        "sort": "ascending",
+        "title": "<DVC_METRIC_Y_LABEL>",
+        "type": "nominal"
+      }
+    },
+    "layer": [
+      {
+        "encoding": {
+          "color": {
+            "field": "percent_of_y",
+            "scale": {
+              "domain": [
+                0,
+                1
+              ]
+            },
+            "title": "",
+            "type": "quantitative"
+          }
+        },
+        "height": 300,
+        "mark": "rect",
+        "width": 300
+      },
+      {
+        "encoding": {
+          "color": {
+            "condition": {
+              "test": "datum.percent_of_y > 0.5",
+              "value": "white"
+            },
+            "value": "black"
+          },
+          "text": {
+            "field": "percent_of_y",
+            "format": ".2f",
+            "type": "quantitative"
+          }
+        },
+        "mark": "text"
+      }
+    ],
+    "transform": [
+      {
+        "aggregate": [
+          {
+            "as": "xy_count",
+            "op": "count"
+          }
+        ],
+        "groupby": [
+          "<DVC_METRIC_Y>",
+          "<DVC_METRIC_X>"
+        ]
+      },
+      {
+        "groupby": [
+          "rev",
+          "<DVC_METRIC_Y>"
+        ],
+        "impute": "xy_count",
+        "key": "<DVC_METRIC_X>",
+        "value": 0
+      },
+      {
+        "groupby": [
+          "rev",
+          "<DVC_METRIC_X>"
+        ],
+        "impute": "xy_count",
+        "key": "<DVC_METRIC_Y>",
+        "value": 0
+      },
+      {
+        "groupby": [
+          "<DVC_METRIC_Y>"
+        ],
+        "joinaggregate": [
+          {
+            "as": "sum_y",
+            "field": "xy_count",
+            "op": "sum"
+          }
+        ]
+      },
+      {
+        "as": "percent_of_y",
+        "calculate": "datum.xy_count / datum.sum_y"
+      }
+    ]
+  },
+  "title": "<DVC_METRIC_TITLE>"
+}

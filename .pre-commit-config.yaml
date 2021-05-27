@@ -12,6 +12,7 @@ repos:
         always_run: true
         verbose: true
         args: ["--autofix"]
+        exclude: .dvc
     -   id: requirements-txt-fixer
         always_run: true
         verbose: true
