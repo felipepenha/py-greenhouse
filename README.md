@@ -127,16 +127,18 @@ USAGE
 
 COMMANDS
 
+    add-commit      git add, pre-commit, and commit
+    bash            bash REPL (Read-Eval-Print loop), suitable for debugging
     build           build image using cache
     build-no-cache  build image from scratch, and not from cache
-    bash            bash REPL (Read-Eval-Print loop), suitable for debugging
-    python3         access Python through the REPL (Read-Eval-Print loop)
+    docs            show the src modules documentation on the browser
+    fastapi         starts up fastapi
     jupyter         access Python through the Jupyter Notebook
-    test            run all tests using pytest (from within the container)
-    run             run src/main.py
     pre-commit      early run of pre-commit git hooks
-    add-commit      git add, pre-commit, and commit
+    python3         access Python through the REPL (Read-Eval-Print loop)
     release         release on dev branch. Be sure to update version.toml before running this operation
+    run             run src/main.py
+    test            run all tests using pytest (from within the container)
 
 ```
 

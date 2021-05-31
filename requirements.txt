@@ -7,6 +7,7 @@ palmerpenguins==0.1.4
 pandas==1.2.2
 pandas-profiling==2.11.0
 pandera==0.6.2
+pdoc==7.0.3
 prefect[viz]==0.14.12
 pydantic==1.8.2
 pytest==6.2.2
