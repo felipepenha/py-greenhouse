@@ -44,9 +44,14 @@ repos:
         name: dvc-post-checkout
         stages:
             - post-checkout
+        language-version: python3
+        entry: echo "dvc-post-checkout"
+        verbose: true
         always_run: true
     -   id: dvc-pre-commit
         name: dvc-pre-commit
         stages:
             - commit
+        language-version: python3
+        verbose: true
         always_run: true
