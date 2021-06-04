@@ -32,9 +32,9 @@ class model:
         # Store the grid in a dictionary
         grid = {}
 
-        grid["max_features"] = [2, 3]
-        grid["max_depth"] = [2, 3]
-        grid["n_estimators"] = [5, 10]
+        grid["max_features"] = [4, 5]
+        grid["max_depth"] = [4, 5]
+        grid["n_estimators"] = [300, 1000]
 
         clf = RandomForestClassifier(random_state=seed)
 
