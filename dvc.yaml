@@ -1,0 +1,8 @@
+stages:
+  build-run:
+    cmd: make build && make run
+    deps:
+      - src/modeling.py
+    metrics:
+      - monitor/metadata_valid.json:
+          cache: true

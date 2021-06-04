@@ -65,10 +65,10 @@ def report_performance(
         y_true=y_true, y_pred=y_pred, output_dict=True
     )
 
-    filename = "{0}/{1}_metadata{2}.json".format(path, meta["timestr"], suffix)
+    filename = "{0}metadata{1}.json".format(path, suffix)
 
     # Export to JSON
-    with open(filename, "a") as fp:
+    with open(filename, "w") as fp:
         json.dump(meta, fp, indent=4)
 
     pass

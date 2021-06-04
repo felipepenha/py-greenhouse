@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  build:
+    cmd: make build && make run
+    outs:
+    - path: monitor
+      md5: 7c3a8f4c317b9ae0d1df7ab62820ff6d.dir
+      size: 3251
+      nfiles: 3
+  build-run:
+    cmd: make build && make run
+    deps:
+    - path: src/modeling.py
+      md5: 6103728b418f2ccc23840f786157baa4
+      size: 3177
+    outs:
+    - path: monitor/metadata_valid.json
+      md5: 91c3f20f203751f9034230a46dc45b0e
+      size: 1093

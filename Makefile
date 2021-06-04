@@ -43,6 +43,7 @@ help:
 	@echo "    bash            bash REPL (Read-Eval-Print loop), suitable for debugging"
 	@echo "    build           build image using cache"
 	@echo "    build-no-cache  build image from scratch, and not from cache"
+	@echo "    dvc             runs dvc commands for model versioning and comparison"
 	@echo "    fastapi         starts up fastapi"
 	@echo "    jupyter         access Python through the Jupyter Notebook"
 	@echo "    pre-commit      early run of pre-commit git hooks"
@@ -98,6 +99,14 @@ run:
 
 pre-commit:
 	pre-commit run --all-files
+
+dvc:
+	- dvc checkout
+	# DVC pipeline
+	- dvc repro
+	# Trigger dvc metrics diff file logging
+	# $(compare-to) is the git rev you are comparing to
+	dvc metrics diff --all $(compare-to) > logs/log_metrics_diff.txt
 
 add-commit:
 	# `-` signalizes that errors will be ignored by make
