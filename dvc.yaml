@@ -5,3 +5,5 @@ stages:
       - src/modeling.py
     outs:
       - monitor
+    metrics:
+      - monitor/metadata_valid.json
