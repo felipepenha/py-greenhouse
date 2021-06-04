@@ -37,3 +37,16 @@ repos:
         pass_filenames: false
         always_run: true
         verbose: true
+-   repo: https://github.com/iterative/dvc
+    rev: 2.3.0
+    hooks:
+    -   id: dvc-post-checkout
+        name: dvc-post-checkout
+        stages:
+            - post-checkout
+        always_run: true
+    -   id: dvc-pre-commit
+        name: dvc-pre-commit
+        stages:
+            - commit
+        always_run: true

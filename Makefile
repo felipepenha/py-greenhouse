@@ -127,3 +127,15 @@ release:
 	# Append log to file including datetime in UTC
 	(date --utc && git push origin HEAD:dev tag $(VERSION)) \
 	2>&1 | tee -ai logs/log_release.txt
+
+# [change code]
+# git add .
+# git commit -m ""
+# dvc repro
+# git checkout -b ""
+# dvc checkout
+# [change code]
+# git add .
+# git commit -m ""
+# dvc repro
+# dvc metrics diff --all > logs/log_metrics_diff.txt
