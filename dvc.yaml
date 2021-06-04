@@ -1,5 +1,7 @@
 stages:
-  build:
+  build-run:
     cmd: make build && make run
+    deps:
+      - src/modeling.py
     outs:
       - monitor

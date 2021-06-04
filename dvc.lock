@@ -7,3 +7,14 @@ stages:
       md5: 7c3a8f4c317b9ae0d1df7ab62820ff6d.dir
       size: 3251
       nfiles: 3
+  build-run:
+    cmd: make build && make run
+    deps:
+    - path: src/modeling.py
+      md5: 682c8b6c245c3ce1d74086eea9f675ef
+      size: 3171
+    outs:
+    - path: monitor
+      md5: 631416f9ceb9cd5e5643ada65353bce5.dir
+      size: 3205
+      nfiles: 3
