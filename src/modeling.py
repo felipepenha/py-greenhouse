@@ -34,7 +34,7 @@ class model:
 
         grid["max_features"] = [4, 5]
         grid["max_depth"] = [4, 5]
-        grid["n_estimators"] = [100, 300, 500, 1000]
+        grid["n_estimators"] = [50, 100, 300, 500]
 
         clf = RandomForestClassifier(random_state=seed)
 
