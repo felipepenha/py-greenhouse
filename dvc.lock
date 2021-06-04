@@ -11,9 +11,9 @@ stages:
     cmd: make build && make run
     deps:
     - path: src/modeling.py
-      md5: 4465edd427ccbe0e99361fb9f63feb8d
-      size: 3185
+      md5: dc17552636be4778361e5f1d2581308a
+      size: 3177
     outs:
     - path: monitor/metadata_valid.json
-      md5: 091a18dfec1048566f4f6b17dd872e58
-      size: 925
+      md5: c903c82e612c21df40c8f71015378b79
+      size: 1092

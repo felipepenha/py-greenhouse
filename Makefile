@@ -99,6 +99,13 @@ run:
 pre-commit:
 	pre-commit run --all-files
 
+dvc:
+	dvc checkout
+	# DVC pipeline
+	dvc repro
+	# Trigger dvc metrics diff file logging
+	dvc metrics diff --all > logs/log_metrics_diff.txt
+
 add-commit:
 	# `-` signalizes that errors will be ignored by make
 	# Add all files in the current directory

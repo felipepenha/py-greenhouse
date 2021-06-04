@@ -37,11 +37,3 @@ repos:
         pass_filenames: false
         always_run: true
         verbose: true
-    -   id: dvc-post-checkout
-        name: dvc-post-checkout
-        entry: dvc checkout
-        language: system
-        pass_filenames: false
-        always_run: true
-        verbose: true
-        stages: [post-checkout]
