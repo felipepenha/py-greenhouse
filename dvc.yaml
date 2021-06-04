@@ -1,0 +1,5 @@
+stages:
+  build:
+    cmd: make build && make run
+    outs:
+      - monitor

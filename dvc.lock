@@ -1,0 +1,9 @@
+schema: '2.0'
+stages:
+  build:
+    cmd: make build && make run
+    outs:
+    - path: monitor
+      md5: 7c3a8f4c317b9ae0d1df7ab62820ff6d.dir
+      size: 3251
+      nfiles: 3
