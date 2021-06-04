@@ -3,7 +3,5 @@ stages:
     cmd: make build && make run
     deps:
       - src/modeling.py
-    outs:
-      - monitor
     metrics:
       - monitor/metadata_valid.json

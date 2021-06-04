@@ -14,7 +14,6 @@ stages:
       md5: d37796e94f328b5885cee066181079a9
       size: 3175
     outs:
-    - path: monitor
-      md5: f6528ba80f63a7e43ffd0666f39fa8cf.dir
-      size: 2957
-      nfiles: 3
+    - path: monitor/metadata_valid.json
+      md5: 9858f27b85e684d70ff5fc3703618fdf
+      size: 928
