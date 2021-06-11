@@ -1,7 +1,9 @@
-import pandas as pd
+import joblib
 
 
 class VanillaModel:
+    """Vanilla model where the predictions are always 0"""
+
     def __init__(self):
 
         pass
@@ -18,22 +20,41 @@ class VanillaModel:
 
 
 class model:
+    """
+    Replace below `VanillaModel` by an actual ML
+    model such as the ones provided by sklearn.
+
+    We are assuming supervised models (a and y are available),
+    but you may also adapt it for unsupervised models
+    (only x available). In that case, erase any reference to
+    `y` below.
+
+    References
+    ----------
+    https://scikit-learn.org/stable/
+    """
+
     def __init__(self):
 
         pass
 
     def fit(self, train, y_col, x_col):
 
-        self.m = VanillaModel.fit(x=train[x_col], y=train[y_col])
+        self.x_col = x_col
+        self.y_col = y_col
+
+        self.m = VanillaModel().fit(x=train[x_col], y=train[y_col])
 
         # Save your model in /models
 
         # Note: for saving your model, we suggest using the
         #       `joblib` python package
 
-        # joblib.dump(self.m, path)
+        path = "/usr/app/models/model.joblib"
 
-        pass
+        joblib.dump(self.m, path)
+
+        return self
 
     def transform_sets(self, train, valid, test):
 
@@ -59,15 +80,3 @@ class model:
         test_out["pred"] = (self.m).predict(x_test)
 
         return train_out, valid_out, test_out
-
-    def transform_new(self, obs):
-        """
-        obs: pandas dataframe
-        """
-
-        x_obs = obs[self.x_col].values
-
-        # Predict
-        obs_out = pd.DataFrame({"pred": (self.m).predict(x_obs)})
-
-        return obs_out
