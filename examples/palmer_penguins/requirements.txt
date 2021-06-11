@@ -1,0 +1,14 @@
+fastapi==0.65.1
+feature-engine==1.0.2
+jupyterlab==3.0.9
+matplotlib==3.3.4
+numpy==1.20.1
+palmerpenguins==0.1.4
+pandas==1.2.2
+pandas-profiling==2.11.0
+pandera==0.6.2
+prefect[viz]==0.14.12
+pydantic==1.8.2
+pytest==6.2.2
+seaborn==0.11.1
+uvicorn==0.13.4

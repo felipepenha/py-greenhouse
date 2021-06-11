@@ -56,7 +56,7 @@ services:
     volumes:
       - .:/usr/app/
     working_dir: /usr/app/
-    command: "pytest --verbose --capture=no"
+    command: "pytest --verbose --capture=no --ignore=examples/"
 
   run:
     image: base_image
