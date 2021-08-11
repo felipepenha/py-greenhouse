@@ -46,7 +46,7 @@ services:
       - .:/usr/app/
     working_dir: /usr/app/
     command: >
-      uvicorn api.main:app --reload --host 0.0.0.0
+      uvicorn src.api:app --reload --host 0.0.0.0
     ports:
       - 8000:8000
 

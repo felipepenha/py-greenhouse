@@ -8,42 +8,18 @@ def test_data_sourcing_get():
 
     print(df)
 
-    cats_sex = [
-        "male",
-        "female",
-    ]
-    cats_species = [
-        "Adelie",
-        "Gentoo",
-        "Chinstrap",
-    ]
-
     schema = pa.DataFrameSchema(
         {
-            "bill_length_mm": pa.Column(
-                float,
-                nullable=True,
-            ),
-            "bill_depth_mm": pa.Column(
-                float,
-                nullable=True,
-            ),
-            "flipper_length_mm": pa.Column(
-                float,
-                nullable=True,
-            ),
-            "body_mass_g": pa.Column(
-                float,
-                nullable=True,
-            ),
-            "sex": pa.Column(
+            "id": pa.Column(
                 str,
-                checks=pa.Check.isin(cats_sex),
                 nullable=True,
             ),
-            "species": pa.Column(
-                str,
-                checks=pa.Check.isin(cats_species),
+            "x": pa.Column(
+                float,
+                nullable=True,
+            ),
+            "y": pa.Column(
+                float,
                 nullable=True,
             ),
         }

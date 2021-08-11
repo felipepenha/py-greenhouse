@@ -27,6 +27,7 @@
 BUILD = docker-compose build
 RUN = docker-compose run
 VERSION = $(shell awk -F ' = ' '$$1 ~ /version/ { gsub(/[\"]/, "", $$2); printf("%s",$$2) }' version.toml)
+MAKEFILE_ABS_PATH = $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 help:
 	@echo "USAGE"
@@ -136,3 +137,15 @@ release:
 	# Append log to file including datetime in UTC
 	(date --utc && git push origin HEAD:dev tag $(VERSION)) \
 	2>&1 | tee -ai logs/log_release.txt
+
+vanilla:
+	echo ""
+	echo "COPYING FROM $(MAKEFILE_ABS_PATH)/examples/vanilla/** TO $(MAKEFILE_ABS_PATH)"
+	echo ""
+	cp -r $(MAKEFILE_ABS_PATH)/examples/vanilla/** $(MAKEFILE_ABS_PATH)
+
+palmer-penguins:
+	echo ""
+	echo "COPYING FROM $(MAKEFILE_ABS_PATH)/examples/palmer_penguins/** TO $(MAKEFILE_ABS_PATH)"
+	echo ""
+	cp -r $(MAKEFILE_ABS_PATH)/examples/palmer_penguins/** $(MAKEFILE_ABS_PATH)

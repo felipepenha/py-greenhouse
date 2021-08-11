@@ -1,6 +1,3 @@
-import joblib
-
-
 class VanillaModel:
     """Vanilla model where the predictions are always 0"""
 
@@ -50,9 +47,8 @@ class model:
         # Note: for saving your model, we suggest using the
         #       `joblib` python package
 
-        path = "/usr/app/models/model.joblib"
-
-        joblib.dump(self.m, path)
+        # Ex:   path "/usr/app/models/"
+        #       joblib.dump(self.m, path)
 
         return self
 
