@@ -11,7 +11,7 @@ def test_data_sourcing_get():
     schema = pa.DataFrameSchema(
         {
             "id": pa.Column(
-                int,
+                str,
                 nullable=True,
             ),
             "x": pa.Column(

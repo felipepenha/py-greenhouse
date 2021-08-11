@@ -35,5 +35,3 @@ if __name__ == "__main__":
         path="/usr/app/monitor/",
         suffix="_valid",
     )
-
-    print(train)

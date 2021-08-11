@@ -1,5 +1,12 @@
 from feature_engine import encoding, imputation
 
+# Note: we suggest using the below helper functions
+#       for missing imputation (for numerical) and
+#       one-hot-encoding (for categorical).
+#       You will find most of other popular Feature
+#       Engineering methods in the `feature_engine`
+#       python package.
+
 
 def numerical_missing_imputation(train, valid, test, cols, imputation_method="median"):
     """Missing imputation for numerical variables.
