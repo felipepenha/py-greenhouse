@@ -47,22 +47,19 @@ help:
 	@echo "    dvc             runs dvc commands for model versioning and comparison"
 	@echo "    fastapi         starts up fastapi"
 	@echo "    jupyter         access Python through the Jupyter Notebook"
+	@echo "    palmer-penguins moves files in examples/palmer_penguins to the main dir"
 	@echo "    pre-commit      early run of pre-commit git hooks"
 	@echo "    python3         access Python through the REPL (Read-Eval-Print loop)"
 	@echo "    release         release on dev branch. \
 	Be sure to update version.toml before running this operation"
 	@echo "    run             run src/main.py"
+	@echo "    vanilla         moves files in examples/vanilla to the main dir"
 	@echo "    test            run all tests using pytest (from within the container)"
+	@echo "    test-no-log     same as test but without log generation"
 
 #################
 # User Commands #
 #################
-
-install-requirements:
-	pip3 install pre-commit
-	pre-commit install
-	pre-commit migrate-config
-	pre-commit autoupdate
 
 build:
 	mkdir --parents monitor
