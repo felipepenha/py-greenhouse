@@ -4,9 +4,6 @@ def clean(df):
 
     Cleansing must be a set of operations independent of data splitting.
 
-    ** Vanilla definition. **
-    Include your own code below to import your project's data.
-
     Parameters
     ----------
     df: pandas dataframe
@@ -35,9 +32,6 @@ def normalize(df):
     loser and upper casing, abbrevations, word order, and so on.
 
     Normalization must be a set of operations independent of data splitting.
-
-    ** Vanilla definition. **
-    Include your own code below to import your project's data.
 
     Parameters
     ----------

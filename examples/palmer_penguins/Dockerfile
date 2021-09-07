@@ -8,6 +8,11 @@ RUN mkdir ${APP_DIR}
 
 WORKDIR ${APP_DIR}
 
+# graphviz is required by prefect[viz]==0.14.12
+RUN apt-get update \
+    && apt-get install -y build-essential graphviz  \
+    && apt-get clean
+
 # pip requirements
 COPY requirements.txt ${APP_DIR}
 

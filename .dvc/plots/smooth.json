@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "values": "<DVC_METRIC_DATA>"
+  },
+  "encoding": {
+    "color": {
+      "field": "rev",
+      "type": "nominal"
+    },
+    "x": {
+      "field": "<DVC_METRIC_X>",
+      "title": "<DVC_METRIC_X_LABEL>",
+      "type": "quantitative"
+    },
+    "y": {
+      "field": "<DVC_METRIC_Y>",
+      "scale": {
+        "zero": false
+      },
+      "title": "<DVC_METRIC_Y_LABEL>",
+      "type": "quantitative"
+    }
+  },
+  "mark": {
+    "type": "line"
+  },
+  "title": "<DVC_METRIC_TITLE>",
+  "transform": [
+    {
+      "bandwidth": 0.3,
+      "groupby": [
+        "rev"
+      ],
+      "loess": "<DVC_METRIC_Y>",
+      "on": "<DVC_METRIC_X>"
+    }
+  ]
+}

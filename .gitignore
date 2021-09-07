@@ -144,7 +144,8 @@ logs/
 monitor/
 
 # Data directory
-data/
+data/*.csv
 
 # Models directory
 models/
+/monitor

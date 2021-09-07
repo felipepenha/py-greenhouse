@@ -97,6 +97,12 @@ The main directory may be either the locally cloned py-greenhouse or a project b
 
 Alternatively, simply run in the terminal `make install-requirements`, to install the `pre-commit` Python package.
 
+## - [dvc](https://dvc.org/doc/install/linux)
+
+```
+pip3 install dvc
+```
+
 ## Do I need to install any other requirements?
 
 No. After installing the basic local requirements described above, you are all set to run everything else inside a Docker container.
@@ -189,7 +195,7 @@ Now, you are ready to start developing Python code by creating new `.py` files i
 
 During development phase, you can normally test out new code in a Jupyter Notebook.
 
-Check out additional examples in the `/notebooks` directory (`.ipynb` files with preffix `example_`).
+Check out additional notebooks in the `/notebooks` directory (`.ipynb` files with preffix `example_`).
 
 
 # Greenhouse Structure
@@ -200,7 +206,7 @@ Check out additional examples in the `/notebooks` directory (`.ipynb` files with
 ├── CONTRIBUTING.md
 ├── docker-compose.yml
 ├── Dockerfile
-├── examples
+├── notebooks
 ├── flow
 ├── images
 ├── LICENSE
@@ -228,7 +234,7 @@ Check out additional examples in the `/notebooks` directory (`.ipynb` files with
 
 Highlights:
 
-* `examples/`: examples, usually Jupyter Notebooks not in production
+* `notebooks/`: notebooks, usually Jupyter Notebooks not in production
 * `logs/`: dated logs, usually `.txt` files
 * `monitor/`: files exported for monitoring purposes (data, model performance, etc). usually `.html` or `.json`.
 * `flow/`: flow diagram as provided by `prefect`

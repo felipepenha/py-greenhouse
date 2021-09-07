@@ -27,6 +27,7 @@
 BUILD = docker-compose build
 RUN = docker-compose run
 VERSION = $(shell awk -F ' = ' '$$1 ~ /version/ { gsub(/[\"]/, "", $$2); printf("%s",$$2) }' version.toml)
+MAKEFILE_ABS_PATH = $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 help:
 	@echo "USAGE"
@@ -44,24 +45,22 @@ help:
 	@echo "    build           build image using cache"
 	@echo "    build-no-cache  build image from scratch, and not from cache"
 	@echo "    docs            show the src modules documentation on the browser"
+	@echo "    dvc             runs dvc commands for model versioning and comparison"
 	@echo "    fastapi         starts up fastapi"
 	@echo "    jupyter         access Python through the Jupyter Notebook"
+	@echo "    palmer-penguins moves files in examples/palmer_penguins to the main dir"
 	@echo "    pre-commit      early run of pre-commit git hooks"
 	@echo "    python3         access Python through the REPL (Read-Eval-Print loop)"
 	@echo "    release         release on dev branch. \
 	Be sure to update version.toml before running this operation"
 	@echo "    run             run src/main.py"
+	@echo "    vanilla         moves files in examples/vanilla to the main dir"
 	@echo "    test            run all tests using pytest (from within the container)"
+	@echo "    test-no-log     same as test but without log generation"
 
 #################
 # User Commands #
 #################
-
-install-requirements:
-	pip3 install pre-commit
-	pre-commit install
-	pre-commit migrate-config
-	pre-commit autoupdate
 
 build:
 	mkdir --parents monitor
@@ -100,6 +99,14 @@ run:
 pre-commit:
 	pre-commit run --all-files
 
+dvc:
+	- dvc checkout
+	# DVC pipeline
+	- dvc repro
+	# Trigger dvc metrics diff file logging
+	# $(compare-to) is the git rev you are comparing to
+	dvc metrics diff --all $(compare-to) > logs/log_metrics_diff.txt
+
 add-commit:
 	# `-` signalizes that errors will be ignored by make
 	# Add all files in the current directory
@@ -133,3 +140,15 @@ docs:
 	# Auto documentation.
 	# references: https://pdoc.dev/ | https://calmcode.io/makefiles/phony-folders.html
 	$(RUN) --service-ports docs
+
+vanilla:
+	echo ""
+	echo "COPYING FROM $(MAKEFILE_ABS_PATH)/examples/vanilla/** TO $(MAKEFILE_ABS_PATH)"
+	echo ""
+	cp -r $(MAKEFILE_ABS_PATH)/examples/vanilla/** $(MAKEFILE_ABS_PATH)
+
+palmer-penguins:
+	echo ""
+	echo "COPYING FROM $(MAKEFILE_ABS_PATH)/examples/palmer_penguins/** TO $(MAKEFILE_ABS_PATH)"
+	echo ""
+	cp -r $(MAKEFILE_ABS_PATH)/examples/palmer_penguins/** $(MAKEFILE_ABS_PATH)
