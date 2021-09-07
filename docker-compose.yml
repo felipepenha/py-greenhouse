@@ -73,8 +73,8 @@ services:
       - .:/usr/app/
     working_dir: /usr/app/
     environment:
-      - PYTHONPATH=/usr/app/
+      - PYTHONPATH=/usr/app/src/
     command: >
-      pdoc -h 0.0.0.0 -p 314 src
+      pdoc --docformat "numpy" -h 0.0.0.0 -p 314 src
     ports:
       - 314:314
