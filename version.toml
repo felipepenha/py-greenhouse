@@ -1,6 +1,6 @@
 [package]
 name = "greenhouse"
-version = "0.0.49"
+version = "1.0.0"
 authors = ["Felipe Penha <felipe.penha@alumni.usp.br>"]
 description = "A Python containerized framework for a better Data X development workflow."
 repository = "https://github.com/felipepenha/py-greenhouse"
