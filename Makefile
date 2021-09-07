@@ -44,6 +44,7 @@ help:
 	@echo "    bash            bash REPL (Read-Eval-Print loop), suitable for debugging"
 	@echo "    build           build image using cache"
 	@echo "    build-no-cache  build image from scratch, and not from cache"
+	@echo "    docs            show the src modules documentation on the browser"
 	@echo "    dvc             runs dvc commands for model versioning and comparison"
 	@echo "    fastapi         starts up fastapi"
 	@echo "    jupyter         access Python through the Jupyter Notebook"
@@ -134,6 +135,11 @@ release:
 	# Append log to file including datetime in UTC
 	(date --utc && git push origin HEAD:dev tag $(VERSION)) \
 	2>&1 | tee -ai logs/log_release.txt
+
+docs:
+	# Auto documentation.
+	# references: https://pdoc.dev/ | https://calmcode.io/makefiles/phony-folders.html
+	$(RUN) --service-ports docs
 
 vanilla:
 	echo ""
