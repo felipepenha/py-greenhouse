@@ -13,7 +13,7 @@ services:
     volumes:
       - .:/usr/app/
     working_dir: /usr/app/
-    entrypoint: /bin/sh
+    entrypoint: /usr/bin/zsh
 
   python3:
     image: base_image
