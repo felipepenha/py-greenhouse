@@ -13,5 +13,5 @@ COPY requirements.txt ${APP_DIR}
 
 RUN pip install --upgrade pip \
     && pip3 install --no-cache-dir -r requirements.txt
-
-CMD ["python3", "src/main.py"]
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)"
+CMD ["python3", "src/main.py","zsh"]
